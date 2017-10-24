@@ -1,0 +1,186 @@
+body {
+  font-family: Verdana, Geneva, sans-serif;
+  background-color: lightgray; }
+
+p {
+  font-size: 0.9em; }
+
+h1 {
+  font-size: 16px;
+  color: #333; }
+
+#player {
+  padding: 0em 0em 3em 0;
+  background-color: black;
+  width: 600px;
+  height: 400px;
+  position: relative; }
+
+#controls {
+  width: 100%;
+  position: absolute;
+  bottom: 0; }
+  #controls button {
+    background: none;
+    border: none;
+    color: inherit;
+    display: inline-block;
+    overflow: visible;
+    font-size: inherit;
+    line-height: inherit;
+    text-transform: none;
+    text-decoration: none;
+    transition: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #fff;
+    outline: 0; }
+
+.ad-label {
+  display: none;
+  color: #ffffff; }
+
+#player.playing-ad button {
+  color: #FDD700; }
+
+#player.playing-ad .vjs-volume-level, #player.playing-ad .vjs-play-progress {
+  background-color: #FDD700; }
+
+#player.playing-ad .ad-label {
+  display: block;
+  position: absolute;
+  bottom: 2em; }
+
+video {
+  width: 100%;
+  height: 100%;
+  background: black; }
+
+.vjs-controls {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  visibility: visible;
+  height: 2em; }
+
+.vjs-control {
+  outline: none;
+  position: relative;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 2em;
+  -webkit-box-flex: none;
+  -moz-box-flex: none;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none; }
+
+.vjs-play-control {
+  cursor: pointer;
+  -webkit-box-flex: none;
+  -moz-box-flex: none;
+  -webkit-flex: none;
+  -ms-flex: none;
+  flex: none; }
+
+.vjs-menu {
+  height: 100%;
+  width: auto;
+  left: 4em;
+  top: 0;
+  padding: 0;
+  margin: 0;
+  flex: none;
+  transition: all 0.4s; }
+
+.vjs-volume-bar {
+  cursor: pointer;
+  outline: 0;
+  width: 4em;
+  height: 0.2em;
+  padding: 1em;
+  padding: 0;
+  margin: 1em 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #73859f;
+  background-color: rgba(115, 133, 159, 0.5); }
+
+.vjs-menu-content {
+  padding: 0;
+  margin: 0 1em 0 0;
+  height: 100%;
+  overflow: hidden; }
+
+.vjs-volume-level {
+  width: 48%;
+  background-color: #fff;
+  height: 0.2em; }
+
+.vjs-progress-control {
+  -webkit-box-flex: auto;
+  -moz-box-flex: auto;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  min-width: 4em; }
+
+.vjs-slider {
+  outline: 0;
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  margin: 1em 0;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #73859f;
+  background-color: rgba(115, 133, 159, 0.5); }
+
+.vjs-progress-holder {
+  -webkit-box-flex: auto;
+  -moz-box-flex: auto;
+  -webkit-flex: auto;
+  -ms-flex: auto;
+  flex: auto;
+  -webkit-transition: all 0.2s;
+  -moz-transition: all 0.2s;
+  -o-transition: all 0.2s;
+  transition: all 0.2s;
+  height: 0.3em; }
+  .vjs-progress-holder .vjs-load-progress {
+    position: absolute;
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    left: 0;
+    top: 0; }
+  .vjs-progress-holder .vjs-play-progress {
+    position: absolute;
+    display: block;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 0;
+    left: 0;
+    top: 0; }
+
+.vjs-play-progress {
+  background-color: #fff; }

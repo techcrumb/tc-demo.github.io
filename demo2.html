@@ -5,6 +5,21 @@
  <HEAD>
  </HEAD>
  <BODY>
-  Here we can display the demo video 
+ <script src="http://localhost/player/main.js">
+ </script>
+ <body>
+ <div id="container">
+ </div>
+ <script>
+     var p = new TC.Player('container', 600, 400);
+     p.init();
+
+     var params = {
+         vidId: 'zWhwYlDPVmo',
+         type: 'youtube', autoplay: true
+     };
+     
+     p.load(params);
+     </script>
 </BODY>
 </HTML>
