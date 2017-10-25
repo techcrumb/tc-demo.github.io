@@ -3,6 +3,26 @@
   Demo: Out-stream (In read) Video Ad | TechCrumb
  </TITLE>
  <HEAD>
+     <style>
+         body{
+             font-family: Droid Serif,serif;
+             font-size: 18px;
+             line-height: 32px;
+             -webkit-font-smoothing: antialiased;
+         }
+
+         @media screen and (min-width: 64em) {
+            .content {
+                width: 50%;
+                margin: auto;
+            }
+         }
+         #container {
+             padding-left: 10px;
+             margin-left: 10px;
+             margin-right: 10px;
+         }
+     </style>
      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
      <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
      <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -10,15 +30,27 @@
  <BODY>
  <script src="player/assets/driver/main.js">
  </script>
- <div id="container">
- </div>
+<div class="content">
+    <p>A statement released by a group of 12 feminists on Tuesday set off a furious debate through the night by asking for the withdrawal of an online campaign to name and shame teachers at Indian universities who are alleged to have sexually harassed or assaulted students. </p>
+    <p>“It worries us that anybody can be named anonymously, with lack of answerability,” the statement <a class="link-external" href="https://kafila.online/2017/10/24/statement-by-feminists-on-facebook-campaign-to-name-and-shame/" rel="nofollow" target="_blank">said</a>. “One or two names of men who have been already found guilty of sexual harassment by due process, are placed on par with unsubstantiated accusations.” </p>
+    <div id="container">
+    </div>
+    <p>The statement urges survivors to use institutional procedures to complain against sexual harassment, even as it acknowledges that this process is “tilted against the complainant”.</p>
+    <p>A statement released by a group of 12 feminists on Tuesday set off a furious debate through the night by asking for the withdrawal of an online campaign to name and shame teachers at Indian universities who are alleged to have sexually harassed or assaulted students. </p>
+    <p>“It worries us that anybody can be named anonymously, with lack of answerability,” the statement <a class="link-external" href="https://kafila.online/2017/10/24/statement-by-feminists-on-facebook-campaign-to-name-and-shame/" rel="nofollow" target="_blank">said</a>. “One or two names of men who have been already found guilty of sexual harassment by due process, are placed on par with unsubstantiated accusations.” </p>
+</div>
+
+
+
  <script>
-     var p = new TC.Player('container', 600, 400);
+     var w = document.getElementById('container').clientWidth - 20;
+     var h = .75*w;
+     var p = new TC.Player('container', w, h);
      p.init();
 
      var params = {
-         vidId: 'zWhwYlDPVmo',
-         type: 'youtube', autoplay: true
+         vidId: 'IGQBtbKSVhY',
+         type: 'youtube', autoplay: true, ad: true, inread: true
      };
 
      p.load(params);
