@@ -23,6 +23,16 @@ h1 {
     width: 100%;
     margin: 0; }
 
+.collapse-ad {
+  display: none;
+  cursor: pointer;
+  position: absolute;
+  right: 0.5em;
+  top: 0.25em;
+  font-size: 2em;
+  color: #fff;
+  box-shadow: 1px 1px 1px #000; }
+
 .content-container, .ad-container {
   height: 100%;
   width: 100%; }
