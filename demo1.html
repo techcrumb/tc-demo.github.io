@@ -28,16 +28,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
  </HEAD>
  <BODY>
- <script src="https://qa.techcrumb.com/driver.js">
- </script>
  <div class="content">
   <p>
    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin augue metus, sagittis id ornare vitae, faucibus id nisl. Quisque ut neque nec enim blandit tempus sed nec dolor. Sed vel pharetra quam, vitae volutpat metus. Aliquam enim eros, fermentum vel urna a, malesuada luctus dolor. Pellentesque tempus dui vitae volutpat tempor. Donec tempor turpis ac tempus facilisis. Nam vestibulum eu nibh sed aliquet. Etiam et scelerisque nisl. Quisque sed odio non nisl tempus accumsan. Sed nec volutpat mi, eget pharetra ligula. Nullam imperdiet rhoncus dui eget maximus. Fusce venenatis consectetur nisi nec interdum.
   </p>
   <p>
    Curabitur imperdiet tempor lorem, ut hendrerit enim feugiat in. Phasellus lacus purus, vulputate eu neque sed, tempor posuere nunc. Vivamus ornare nibh dictum turpis maximus, in bibendum augue tincidunt. Donec sit amet vestibulum velit, sit amet sollicitudin lectus. Morbi fermentum ante sed enim pharetra, sed molestie orci suscipit. Sed efficitur vitae neque ac consequat. Aenean iaculis pellentesque sodales. Mauris laoreet pharetra massa. Aliquam erat volutpat. Sed faucibus efficitur odio, vel fermentum magna pulvinar id. Pellentesque mollis est in lectus blandit, nec facilisis diam tincidunt. Sed ut ex at lacus vestibulum tincidunt vel quis quam. Nam mattis tellus a magna lobortis dapibus. Curabitur vitae aliquam mauris. Sed a venenatis tortor.
-  </p><div id="container">
-  </div>
+  </p>
+  <script src="https://qa.techcrumb.com/main.js"></script>
+  <div id='tc-videox'></div>
   <p>
    Sed commodo dignissim sapien elementum fermentum. Quisque sed erat ante. Cras sem libero, lacinia sit amet pretium convallis, blandit sit amet magna. Nullam rhoncus metus augue, quis pharetra leo faucibus nec. Donec vel dui velit. Etiam tellus ligula, sagittis viverra euismod nec, viverra non tellus. Morbi luctus mollis odio, et vulputate tellus consequat sed. Quisque in odio quis nulla fermentum elementum. Fusce ornare libero sit amet laoreet consequat. Aenean in lorem quis sem rhoncus facilisis sed in ante. Aliquam mauris sem, facilisis eu ligula sed, consequat porta turpis.
   </p><p>
@@ -49,20 +48,14 @@
 
 
 
- <script>
-     var w = document.getElementById('container').clientWidth - 20;
-     var h = .75*w;
-     var p = new TC.Player('container', w, h);
-     p.init();
-
-
-     var adparams = {
-         videoId: '2c9f986e606083dc016062db57420000', pubId: '74285b6e-edd4-11e6-9699-0251530a1715',
-         placementId : 'demo'
-     };
-
-     p.load(adparams);
-
- </script>
+ <script type="text/javascript">
+                   TC.init({
+                               videoId: '2c9f986e620516bf016206d4e3740001',
+                               pubId: '74285b6e-edd4-11e6-9699-0251530a1715',
+                               placementId: '2c9f986e620516bf016206bdb4ea0000',
+                               elId: 'tc-videox',
+                               aspectRatio: null // default 16:9
+                           });
+</script>
  </BODY>
 </HTML>
