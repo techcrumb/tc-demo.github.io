@@ -1,50 +1,164 @@
-<HTML>
- <TITLE>
-  TechCrumb VideoX Demo
- </TITLE>
- <HEAD>
-  <style>
-   body{
-    font-family: Droid Serif,serif;
-    font-size: 18px;
-    line-height: 32px;
-    -webkit-font-smoothing: antialiased;
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+ <title>TechCrumb VideoX Demo - ProsperX</title>
+ <style type="text/css">
+  .container {
+   width:1274px;
+   margin:0 auto;
+  }
+  .mid-container {
+   width:1274px;
+   margin:0 auto;
+  }
+  #logo {
+   padding: 20px 0px 20px 0px;
+   text-align:center;
+  }
+  .blue-line {
+   border-top: 5px solid #253B7A;
+   height: 5px;"
+  }
+  .investSection {
+   margin-bottom: 30px;
+   font-size: 30px;
+   font-weight: 300;
+   letter-spacing: -0.2px;
+   text-align: center;
+   color: #001837;
+  }
+  .video-heding {
+   font-size:30px;
+   color:#000000;
+   margin-bottom:20px;
+   margin-top: 20px;
+  }
+  .videotitle {
+   color: #343434;
+   font-size: 20px;
+   padding-bottom: 10px;
+   font-weight: bold;
+  }
+  .video-frame {
+   width:617px;
+   overflow:hidden;
+   float: left;
+   margin-right: 15px;
+  }
+  @media only screen and (max-width: 1024px) {
+   .video-frame {
+    width: 500px;
+    overflow: hidden;
+    float: left;
+    margin-right: 15px;
    }
+   .container {
+    width:1035px;
+    margin:0 auto;
+   }
+   .mid-container {
+    width: 1035px;
+    margin: 0 auto;
+   }
+  }
+  @media only screen and (max-width: 992px) {
+   .container {
+    width:inherit;
+    margin:0 auto;
+   }
+   .mid-container {
+    width: 100%;
+    margin: 0 auto;
+   }
+   #logo {
+    text-align:center;
+    padding: 20px 0px 20px 0px;
+   }
+   .video-frame {
+    width: 617px;
+    overflow: hidden;
+    margin-bottom: 20px;
+    float: none;
+    margin: 10px auto;
+   }
+  }
 
-   @media screen and (min-width: 64em) {
-    .content {
-     width: 50%;
-     margin: auto;
-    }
+  @media only screen and (max-width: 767px) {
+   .container {
+    width:inherit;
+    margin:0 auto;
    }
-   #container {
-    padding-left: 10px;
-    margin-left: 10px;
-    margin-right: 10px;
+   #logo {
+    text-align:center;
+    padding: 20px 0px 20px 0px;
    }
-  </style>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
- </HEAD>
- <BODY>
- <div class="content">
-  <p>
-  <div style="font-size:20px;font-weight:bold;text-align:center">
-    ProsperX Investment Multiplier - Videos
+   .video-frame {
+    width: 100%;
+    overflow: hidden;
+   }
+  }
+  @media only screen and (max-width: 459px) {
+   #logo img {
+    width: 300px;
+   }
+   .mid-container {
+    width:100%;
+    margin:0 auto;
+   }
+   .video-frame {
+    width: 100%;
+    overflow: hidden;
+   }
+  }
+ </style>
+</head>
+
+<body>
+<div class="container">
+ <div id="logo"><img src="https://cdn.prosperx.com/images/logo.png" /></div>
+</div>
+
+<div style="width:100%; background-color: #fafafa; padding:35px 0px 35px 0px; overflow:hidden;">
+ <div class="container" style=" background-color: #fafafa;">
+
+  <div class="mid-container">
+   <div class="cntr">
+    <div class="investSection">ProsperX Investment Multiplier - Videos</div>
+
+    <div class="video-frame">
+     <script src="https://qa.techcrumb.com/main.js"></script>
+     <div id='tc-videox-1'></div>
+     <script type="text/javascript">
+         TC.init({
+             videoId: '2c9f986e64effacc0164f4f07a670009',
+             pubId: '2c9f986e64effacc0164f481b9e60004',
+             placementId: '2c9f986e64effacc0164f4eea8810007',
+             elId: 'tc-videox-1',
+             aspectRatio: null
+         });
+     </script>
+    </div>
+
+    <div class="video-frame">
+     <script src="https://qa.techcrumb.com/main.js"></script>
+     <div id='tc-videox-2'></div>
+     <script type="text/javascript">
+         TC.init({
+             videoId: '2c9f986e64effacc0164f4f1842a000b',
+             pubId: '2c9f986e64effacc0164f481b9e60004',
+             placementId: '2c9f986e64effacc0164f4eea8810007',
+             elId: 'tc-videox-2',
+             aspectRatio: null
+         });
+     </script>
+    </div>
+   </div>
+
   </div>
-  </p>
-  <script src="https://qa.techcrumb.com/main.js"></script>
-      <div id='tc-videox'></div>
-          <script type="text/javascript">
-          TC.init({
-              videoId: '2c9f986e64effacc0164f4f07a670009',
-              pubId: '2c9f986e64effacc0164f481b9e60004',
-              placementId: '2c9f986e64effacc0164f4eea8810007',
-              elId: 'tc-videox',
-              aspectRatio: null
-          });
-  </script>
+
  </div>
- </BODY>
-</HTML>
+</div>
+
+</body>
+</html>
