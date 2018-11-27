@@ -4,7 +4,9 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <title>NewsX Demo 1.2 | Vertoz VAST Tag| TechCrumb</title>
     <script data-cfasync="false">
-        var tagurl = "https://vast.streamrail.net/ssp/vast/5821a40936cbcf0002000001/5bf7f4bee1e67a0001c94201?cb=[CB]&width=[WIDTH]&height=[HEIGHT]&dnt=[DO_NOT_TRACK]&sub_id=[SUB_ID]&ip=[IP]&ua=[UA]&user_consent=[USER_CONSENT]&gdpr=[GDPR]&page_url=[PAGE_URL]";
+        var tagurl1 = "https://vast.streamrail.net/ssp/vast/5821a40936cbcf0002000001/5bf7f4bee1e67a0001c94201?cb=[CB]&width=[WIDTH]&height=[HEIGHT]&dnt=[DO_NOT_TRACK]&sub_id=[SUB_ID]&ip=[IP]&ua=[UA]&user_consent=[USER_CONSENT]&gdpr=[GDPR]&page_url=[PAGE_URL]";
+        var tagurl2 = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=[timestamp]";
+        var tagObj = [ {"tag": tagurl1, "network": "vertoz_streamrail" },{"tag": tagurl2, "network": "google" }];
         (function (t, i, s, a) {
             var c = 'script', E = window, m = document;
             E[t] = E[t] || {};
@@ -16,7 +18,7 @@
             m.async = 1;
             m.src = "https://qa.techcrumb.com/tc-initVast.js?etag=1";
             b.parentNode.insertBefore(m, b)
-        })("tcEmbed", "2c9f986e64effacc0164f481b9e60004", 3, tagurl
+        })("tcEmbed", "2c9f986e64effacc0164f481b9e60004", 3, tagObj
         );
     </script>
 </head>
