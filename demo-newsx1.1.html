@@ -4,8 +4,6 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <title>NewsClick Demo 1 | TechCrumb</title>
     <script data-cfasync="false">
-//      var tagurl = "https://s3.amazonaws.com/video1234-test/test/ad.xml";
-//        var tagurl = "https://pubads.g.doubleclick.net/gampad/live/ads?sz=640x480&iu=/21673111209/NewsX_VideoAd_640x480&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&url=[referrer_url]&description_url=[description_url]&correlator=[timestamp]";
         var tagurl = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=[timestamp]";
         (function (t, i, s, a) {
             var c = 'script', E = window, m = document;
@@ -16,7 +14,7 @@
             E[t].a = a;
             E[t].s = s;
             m.async = 1;
-            m.src = "https://qa.techcrumb.com/tc-initVast.js?etag=1";
+            m.src = "https://techcrum.firebaseapp.com/tc-initVast.js?etag=1";
             b.parentNode.insertBefore(m, b)
         })("tcEmbed", "2c9f986e64effacc0164f481b9e60004", 3, tagurl
         );
