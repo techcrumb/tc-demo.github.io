@@ -4,9 +4,11 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"/>
     <title>NewsX Demo 1.2 | Vertoz VAST Tag| TechCrumb</title>
     <script data-cfasync="false">
-        //var tagurl1 = "https://vast.streamrail.net/ssp/vast/5821a40936cbcf0002000001/5bf7f4bee1e67a0001c94201?cb=[CB]&width=[WIDTH]&height=[HEIGHT]&dnt=[DO_NOT_TRACK]&sub_id=[SUB_ID]&ip=[IP]&ua=[UA]&user_consent=[USER_CONSENT]&gdpr=[GDPR]&page_url=[PAGE_URL]";
-        var tagurl2 = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=[timestamp]";
-        var tagObj = [ {"tag": tagurl2, "network": "vertoz_streamrail" }];
+        var tagurl_vertoz_streamrail = "https://vast.streamrail.net/ssp/vast/5821a40936cbcf0002000001/5bf7f4bee1e67a0001c94201?cb=[CB]&width=[WIDTH]&height=[HEIGHT]&dnt=[DO_NOT_TRACK]&sub_id=[SUB_ID]&ip=[IP]&ua=[UA]&user_consent=[USER_CONSENT]&gdpr=[GDPR]&page_url=[PAGE_URL]";
+        var tag_tc_google_sample = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=[timestamp]";
+
+        var tagObj = [{"tag": tag_tc_google_sample, "network": "tc_google_sample"}];
+
         (function (t, i, s, a) {
             var c = 'script', E = window, m = document;
             E[t] = E[t] || {};
@@ -34,8 +36,15 @@
             style="font-size:13px; color:#0d3554">18 October 2018</span></div>
 
     <div style=" width:560px; overflow:hidden; height:315px;">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/MnG8IOELNpc" frameborder="0"
-                allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/MnG8IOELNpc" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+
+        <!--<iframe width="560" height="315" src="https://www.youtube.com/embed/gjaH2iuoYWE" frameborder="0"
+                allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gjaH2iuoYWE" frameborder="0"
+                allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
     </div>
 
     <!--<div style=" width:640px; overflow:hidden; height:480px;">
