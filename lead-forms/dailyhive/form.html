@@ -1,23 +1,30 @@
 <HTML>
 <HEAD>
     <link rel="stylesheet" href="my.css">
+    <link rel="stylesheet" href="mycss.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="myjs.js"></script>
 </HEAD>
 <BODY>
 <div class="post_newsletter">
     <div class="row">
         <div class="large-6 large-centered columns">
             <h2 class="text-center push-down-10">HEY YOU!</h2>
-            <h3 class="text-center push-down-20">Sign Up to our Newsletter for exclusive content, contests, and
+            <h3 class="text-center push-down-20">Sign Up to our Newsletter for exclusive content
                 perks.</h3>
         </div>
     </div>
     <div class="row">
-        <div class="large-6 medium-8 small-10 large-centered medium-centered small-centered columns">
+        <div class="large-6 medium-8 large-centered medium-centered small-centered columns">
             <div id="mc_embed_signup">
-                <form action="https://dailyhive.us4.list-manage.com/subscribe/post?u=2478fdffd4188d872553e9c7a&amp;id=117f3ac428"
-                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                      target="_blank" novalidate="">
-                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+                <form
+                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                        target="_blank" novalidate="">
+                    <input type="text" value="" name="firstname" class="mobile required" id="firstname"
                            placeholder="Enter your email address" required="">
                     <select name="MMERGE2" class="required" id="mce-MMERGE2">
                         <option value="">Select your province</option>
@@ -39,4 +46,3 @@
 </div>
 </BODY>
 </HTML>
-
