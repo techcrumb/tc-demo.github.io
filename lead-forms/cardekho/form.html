@@ -1,6 +1,13 @@
 <HTML>
 <HEAD>
     <link rel="stylesheet" href="my.css">
+    <link rel="stylesheet" href="mycss.css">
+    <script
+            src="https://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+    <script src="myjs.js"></script>
 </HEAD>
 <BODY>
 <div class="post_newsletter">
@@ -10,15 +17,16 @@
             <h3 class="text-center push-down-20">Claim your FREE TEST DRIVE at your door</h3>
         </div>
     </div>
-    <div class="row">
-        <div style="width: 80%;" class="large-6 medium-8 small-10 large-centered medium-centered small-centered columns">
+    <div style="width: 100%;" class="row">
+        <div class="large-6 medium-8 large-centered medium-centered small-centered columns">
             <div id="mc_embed_signup">
                 <form
-                      method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
-                      target="_blank" novalidate="">
-                    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL"
+                        method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
+                        target="_blank" novalidate="">
+                    <input type="hidden" name="formID" value="2c9580836445c87a016445c89f050000"/>
+                    <input type="text" value="" name="phone" class="mobile required" id="phone"
                            placeholder="Enter your mobile number" required="">
-                    <select name="MMERGE2" class="required" id="mce-MMERGE2">
+                    <select name="city" class="required" id="city">
                         <option value="">Select your city</option>
                         <option value="Bangaluru">Bangaluru</option>
                         <option value="Chandigarh">Chandigarh</option>
@@ -33,12 +41,7 @@
                         <option value="Noida">Noida</option>
                         <option value="Other">Other</option>
                     </select>
-
-                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text"
-                                                                                              name="b_2478fdffd4188d872553e9c7a_117f3ac428"
-                                                                                              tabindex="-1" value="">
-                    </div>
-                    <input type="submit" value="I'm Interested" name="subscribe" id="mc-embedded-subscribe" class="button">
+                    <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button">
                 </form>
             </div>
         </div>
@@ -46,4 +49,3 @@
 </div>
 </BODY>
 </HTML>
-
