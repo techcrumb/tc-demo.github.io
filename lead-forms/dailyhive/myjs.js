@@ -2,8 +2,9 @@ $(document).ready(() => {
     $("form").submit( () => {
         if($("form").valid()) {
             const thankYouMsg = 'Thanks for filling the form!';
+            const formData =  $('form').serialize()
             $('.post_newsletter').html(thankYouMsg).addClass('flip-vertical');
-            window.parent.postMessage(JSON.stringify({tc: true, formSubmission: true, formData: $('form').serialize()}), '*');
+            window.parent.postMessage(JSON.stringify({tc: true, formSubmission: true, formData: formData}), '*');
         }
         return false;
     });
