@@ -1,10 +1,10 @@
 $(document).ready(() => {
     $("form").submit( () => {
         if($("form").valid()) {
-            const thankYouMsg = 'Thanks for filling the form!';
-            const formData =  $('form').serialize()
+            const thankYouMsg = 'Thanks for showing your interest!';
+            const formData =  $('form').serialize();
             $('.post_newsletter').html(thankYouMsg).addClass('flip-vertical');
-            window.parent.postMessage(JSON.stringify({tc: true, formSubmission: true, formData: formData}), '*');
+            window.parent.postMessage(JSON.stringify({tc: true, formSubmission: true, splashForm:true, formData: formData}), '*');
         }
         return false;
     });
@@ -29,6 +29,9 @@ $(document).ready(() => {
             element.before(error)
         }
     });
+
+    window.parent.postMessage(JSON.stringify({tc: true, formLoaded: true, splashForm:true}), '*');
+
 });
 
 
