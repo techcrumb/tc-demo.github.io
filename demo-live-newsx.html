@@ -1,0 +1,98 @@
+<HTML>
+<TITLE>
+    Demo: In-stream Video Ad | TechCrumb
+</TITLE>
+<HEAD>
+    <style>
+        body {
+            font-family: Droid Serif, serif;
+            font-size: 18px;
+            line-height: 32px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        @media screen and (min-width: 64em) {
+            .content {
+                width: 50%;
+                margin: auto;
+            }
+        }
+
+        #container {
+            padding-left: 10px;
+            margin-left: 10px;
+            margin-right: 10px;
+        }
+    </style>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</HEAD>
+<BODY>
+<div class="content">
+    <p>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin augue metus, sagittis id ornare vitae, faucibus
+        id nisl. Quisque ut neque nec enim blandit tempus sed nec dolor. Sed vel pharetra quam, vitae volutpat metus.
+        Aliquam enim eros, fermentum vel urna a, malesuada luctus dolor. Pellentesque tempus dui vitae volutpat tempor.
+        Donec tempor turpis ac tempus facilisis. Nam vestibulum eu nibh sed aliquet. Etiam et scelerisque nisl. Quisque
+        sed odio non nisl tempus accumsan. Sed nec volutpat mi, eget pharetra ligula. Nullam imperdiet rhoncus dui eget
+        maximus. Fusce venenatis consectetur nisi nec interdum.
+    </p>
+
+    <p>
+        === LIVE STREAM ====
+    </p>
+    <div id='tc-livestream'></div>
+    <script src="https://tc-pubtest.firebaseapp.com/main.js"></script>
+    <script>
+        var width = Math.min(document.getElementById('tc-livestream').clientWidth, document.body.clientWidth) + 'px';
+        document.getElementById('tc-livestream').style.width = width;
+
+        TC.init({
+            //vurl:'https://playhls.media.nic.in/live/ddnews-360p/index.m3u8',
+            vurl: 'https://streamidea.multitvsolution.in/NewsX-c/playlist.m3u8',
+            ed: '',
+            pubId: "",
+            elId: 'tc-livestream',
+            vid: 'VTEdJKJlxxc',
+            type: 'hls', //youtube|mp4
+            apm: 1//: disabled | 0: autoplay muted | 1: autoplay unmuted)
+        });
+    </script>
+
+    <p>
+        Curabitur imperdiet tempor lorem, ut hendrerit enim feugiat in. Phasellus lacus purus, vulputate eu neque sed,
+        tempor posuere nunc. Vivamus ornare nibh dictum turpis maximus, in bibendum augue tincidunt. Donec sit amet
+        vestibulum velit, sit amet sollicitudin lectus. Morbi fermentum ante sed enim pharetra, sed molestie orci
+        suscipit. Sed efficitur vitae neque ac consequat. Aenean iaculis pellentesque sodales. Mauris laoreet pharetra
+        massa. Aliquam erat volutpat. Sed faucibus efficitur odio, vel fermentum magna pulvinar id. Pellentesque mollis
+        est in lectus blandit, nec facilisis diam tincidunt. Sed ut ex at lacus vestibulum tincidunt vel quis quam. Nam
+        mattis tellus a magna lobortis dapibus. Curabitur vitae aliquam mauris. Sed a venenatis tortor.
+    </p>
+
+    <p>
+        Sed commodo dignissim sapien elementum fermentum. Quisque sed erat ante. Cras sem libero, lacinia sit amet
+        pretium convallis, blandit sit amet magna. Nullam rhoncus metus augue, quis pharetra leo faucibus nec. Donec vel
+        dui velit. Etiam tellus ligula, sagittis viverra euismod nec, viverra non tellus. Morbi luctus mollis odio, et
+        vulputate tellus consequat sed. Quisque in odio quis nulla fermentum elementum. Fusce ornare libero sit amet
+        laoreet consequat. Aenean in lorem quis sem rhoncus facilisis sed in ante. Aliquam mauris sem, facilisis eu
+        ligula sed, consequat porta turpis.
+    </p>
+    <p>
+        Nam consequat enim quam. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+        Praesent in eros id neque lobortis cursus. Vestibulum efficitur augue augue, at scelerisque massa pharetra
+        dictum. Sed fringilla tortor sit amet mauris porta, quis bibendum dolor lacinia. Proin lacinia dapibus velit.
+        Donec dictum mi at dapibus vulputate. Vestibulum rutrum eget mi id placerat. Nulla cursus, eros a porttitor
+        fermentum, libero enim congue dui, eget ultricies lectus neque nec metus. Ut auctor nulla ligula, non facilisis
+        nunc elementum eget. Donec mattis ultricies purus at rutrum.
+    </p>
+    <p>
+        Nulla facilisi. Donec pellentesque enim imperdiet gravida sodales. Donec commodo nunc sit amet leo congue
+        faucibus. Sed consequat rutrum diam ut pretium. Vestibulum erat erat, pellentesque non elementum eu, mattis nec
+        mauris. Pellentesque feugiat augue felis, id sollicitudin odio finibus ac. Nullam vitae hendrerit leo. Integer
+        mauris enim, interdum sed tincidunt eu, aliquam eu mi. Sed luctus congue augue, in blandit mi ornare et.
+    </p>
+</div>
+
+</BODY>
+</HTML>
