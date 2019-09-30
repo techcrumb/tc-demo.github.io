@@ -1,0 +1,71 @@
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<!--<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>-->
+<script src="../myjs.js"></script>
+<link rel="stylesheet" href="../mycss.css">
+
+<style type="text/css">
+    div.post_newsletter{width:100%;background:url(pmpbk.jpg) no-repeat;background-size:cover;background-position:0 5px;padding:0%;text-align:center}
+    div.form-group{margin-bottom:0%;}
+</style>
+<!------ Include the above in your HEAD tag ---------->
+
+<div class="post_newsletter">
+    <div class="row col-sm-6 col-md-6 col-xs-12">
+        <div class="col-sm-12 col-md-12 col-xs-12">
+          <form class="form-horizontal" method="POST">
+            <fieldset>
+            
+            <!-- Form Name -->
+            <!--legend>Form Name</legend>-->
+            <div style="text-align:center">
+              <h3 style="text-align:center;color:white;background-color:gray;"><b>For Enquiry</b></h3>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ff_name"></label>  
+              <div class="col-md-6">
+              <input id="ff_name" name="ff_name" type="text" placeholder="Full Name" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+            
+            <!-- Text input-->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ff_phone"></label>  
+              <div class="col-md-6">
+              <input id="ff_phone" name="ff_phone" type="text" placeholder="Phone Number" class="form-control input-md" required="">
+                
+              </div>
+            </div>
+            
+            <!-- Select Basic -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ff_intrest"></label>
+              <div class="col-md-6">
+                <select id="ff_intrest" name="ff_intrest" class="form-control">
+                  <option value="Intrested in">Intrested in</option>
+                  <option value="1BHK">1BHK</option>
+                  <option value="2BHK">2BHK</option>
+                  <option value="3BHK">3BHK</option>
+                </select>
+              </div>
+            </div>
+            
+            <!-- Button -->
+            <div class="form-group">
+              <label class="col-md-4 control-label" for="ff_submit"></label>
+              <div class="col-md-4">
+                <button id="ff_submit" name="ff_submit" class="btn btn-success">Submit</button>
+              </div>
+            </div>
+            
+            </fieldset>
+            </form>
+            
+        </div>
+    </div>
+</div>
