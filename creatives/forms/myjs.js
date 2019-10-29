@@ -1,5 +1,5 @@
-$(document).ready(() => {
-    $("form").submit( () => {
+$(document).ready( function() {
+    $("form").submit( function() {
         if($("form").valid()) {
             const thankYouMsg = 'Thanks for filling the form!';
             const formData =  $('form').serialize();
@@ -14,7 +14,7 @@ $(document).ready(() => {
         "This field is required.");
     $.validator.addMethod("cEmail", $.validator.methods.email,
         "Enter valid email address.");
-    $.validator.addMethod("cMobile", (phone) => {
+    $.validator.addMethod("cMobile", function(phone) {
         /*var regex = /\(?([0-9]{3})\)?([ .-]?)([0-9]{3})\2([0-9]{0,})/;
         return regex.test(phone) || (phone && phone.length >= 10);*/
         var regex = /^[6-9]\d{9}$/; //Indian mobile number
