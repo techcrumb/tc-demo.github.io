@@ -1,6 +1,6 @@
 <HTML>
     <TITLE>
-        Bhaskar | Demo | Outstream
+        Form Preview | Demo | Outstream
     </TITLE>
     <HEAD>
         <style>
@@ -24,6 +24,16 @@
                 margin-right: 10px;
             }
         </style>
+        <script>
+            function myFunction() {
+              var url = prompt("Please enter Full Link of the Form","https://demo.techcrumb.in/creatives/forms/performoo/form.html");
+              var length = document.getElementsByClassName("frame1").length
+              for(i=0; i<length;i++){
+                document.getElementsByClassName("frame1")[i].src = url;
+              }
+            }
+        </script>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
         <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -53,28 +63,26 @@
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
         </p>
+        <button onclick="myFunction()">Enter Form Link</button>
         <h3> In Article: 640 X 360 </h3>
-        <iframe width="640" height="360" src="../../creatives/forms/smerush/form.html">
+        <iframe width="640" height="360" class="frame1">
         </iframe>
         <br/>
 
         <h3> Billboard </h3>
-        <iframe width="445" height="250" src="../../creatives/forms/smerush/form.html">
+        <iframe width="445" height="250" class="frame1">
         </iframe>
         <br/>
 
         <h3>Banner 300 X 250</h3>
-        <iframe width="300" height="250" src="../../creatives/forms/smerush/form.html">
+        <iframe width="300" height="250" class="frame1">
         </iframe>
         <br/>
 
         <h3> Banner (video size) 300 X 169</h3>
-        <iframe width="300" height="169" src="../../creatives/forms/smerush/form.html">
+        <iframe width="300" height="169" class="frame1">
         </iframe>
         <br/>
-
-
-
         <p>
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
@@ -85,30 +93,7 @@
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
             DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM DEMO-CPL-OUTSTREAM
         </p>
-    </div>
-
-    <!--<script data-cfasync="false">
-        (function (t, i, s, a) { var c = 'script', src = 'https://tc-vai.web.app', E = window, m = document;
-            E[t] = E[t] || {};
-            b = m.getElementsByTagName(c)[0];
-            m = m.createElement(c);
-            E[t].i = i;
-            E[t].a = a;
-            E[t].s = s;
-            E[t].src = src;
-            m.async = 1;
-            m.src = src + "/tc-initForm.js";
-            b.parentNode.insertBefore(m, b)
-        })("tcEmbed", {
-            ed: "jCsxHFDKTlmnRFXDB49wP74Z9CaBIwk0r0XbAWMaVWLrg6cQWBLo56x4HNqxuGlDZ3t37SpuY3HvAf5A1k+F0Q==",
-            pId: "",
-            s: 0,
-            logo: {},
-            adSlot: 'tcSlot',
-            waitTime: 0.1
-        }, 3);
-    </script>-->
-    
+    </div>    
     </BODY>
     </HTML>
     
