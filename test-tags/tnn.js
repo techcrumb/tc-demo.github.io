@@ -28,7 +28,10 @@
         }
         var newElement = m.createElement('div');
         newElement.id = 'tcpubslot';
-        newElement.style.width = E.innerWidth + 'px';
+        var width = Math.min(E.innerWidth, 640);
+        var height = width * 0.56;
+        newElement.style.width = width + 'px';
+        newElement.style.height = height + 'px';
         slotEle.parentNode.insertBefore(newElement, slotEle.nextSibling);
     }
 })("tcEmbed", {
