@@ -28,10 +28,6 @@
         }
         var newElement = m.createElement('div');
         newElement.id = 'tcpubslot';
-        var width = Math.min(E.innerWidth, 640);
-        var height = width;
-        newElement.style.width = width + 'px';
-        newElement.style.height = height + 'px';
         newElement.style.margin = 'auto';
         slotEle.parentNode.insertBefore(newElement, slotEle.nextSibling);
     }
