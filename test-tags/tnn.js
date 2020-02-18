@@ -32,6 +32,7 @@
         var height = width;
         newElement.style.width = width + 'px';
         newElement.style.height = height + 'px';
+        newElement.style.margin = 'auto';
         slotEle.parentNode.insertBefore(newElement, slotEle.nextSibling);
     }
 })("tcEmbed", {
