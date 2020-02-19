@@ -13,17 +13,19 @@
     se.async = 1;
     se.src = src + "/tc-initForm.js";
     b.parentNode.insertBefore(se, b)
+    function getMobileSlot() {
+        var slot = '.story-div.full-article > p';
+        return m.querySelectorAll(slot)[1];
+    }
     if(!m.getElementById(i.adSlot)) {
         var slot = '', slotEle = '';
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-            slot = '.storyContent > p, .photo_data .photo_detail_cap > p';
-            slotEle = m.querySelectorAll(slot)[0];
+          slotEle = getMobileSlot();
         }else{
             slot = '.artical-description > p';
             slotEle = m.querySelectorAll(slot)[1];
             if (!slotEle) {
-                slot = '.storyContent > p, .photo_data .photo_detail_cap > p';
-                slotEle = m.querySelectorAll(slot)[0];
+                slotEle = getMobileSlot();
             }
         }
         var newElement = m.createElement('div');
