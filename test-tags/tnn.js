@@ -3,6 +3,10 @@
     try {
         m = E.top.document || m; E = E.top.document ? E.top : E;
     } catch (e) {}
+    if (E.tcVideoRendered) {
+        console.log('tc ad already rendered hence going to skip tc video');
+        returnn;
+    }
     E[t] = E[t] || {};
     var b = m.getElementsByTagName(c)[0];
     var se = m.createElement(c);
