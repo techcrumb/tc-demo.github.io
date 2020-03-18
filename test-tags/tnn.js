@@ -5,7 +5,7 @@
     } catch (e) {}
     if (E.tcVideoRendered) {
         console.log('tc ad already rendered hence going to skip tc video');
-        returnn;
+        return;
     }
     E[t] = E[t] || {};
     var b = m.getElementsByTagName(c)[0];
