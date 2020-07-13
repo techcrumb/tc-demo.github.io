@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>Inaaj Feed Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 
 <div id="inaaj-feed"></div>
@@ -9,9 +10,25 @@
         const init = async () => {
             const shownFeeds = [];
             let currentFeeds = 0;
+            let adId = 0;
             let listOfFeeds = [];
             let elementObserved = null;
             let ytTemplate = "<div><div><div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;\"><iframe src=\"https://www.youtube.com/embed/YT_VIDEO_ID_MACRO\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen scrolling=\"no\" allow=\"encrypted-media\"></iframe></div></div></div>"
+
+            const addAdScript = () => {
+                const link = 'https://securepubads.g.doubleclick.net/tag/js/gpt.js';
+                const newScript = document.createElement("script");
+                newScript.setAttribute('src', link);
+                document.body.appendChild(newScript);
+            }
+
+            const runTwitterScript = () => {
+                const link = 'https://platform.twitter.com/widgets.js';
+                const newScript = document.createElement("script");
+                newScript.setAttribute('src', link);
+                document.body.appendChild(newScript);
+            }
+
             const extractVideoID = (url) => {
                 let regExp = /(?:http(?:s)?:\/\/)?(?:www\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'<> #]+)/;
                 let match = url.match(regExp);
@@ -20,41 +37,89 @@
                 }
             }
             const renderItem = (slot, {title, desc, author, link}, width) => {
+                const isYoutube = author === 'YouTube' && link && desc && desc.indexOf('<iframe') === -1;
+                const isTwitter = desc.indexOf('twitter-tweet') !== -1;
+
+                const isSM = width <= 768;
+                const isMD = !isSM && width <= 1440;
+
                 const containerDiv = document.createElement('div');
                 containerDiv.style.padding = '0.5rem';
                 containerDiv.style.border = '1px solid #aaa';
                 containerDiv.style.borderRadius = '4px';
                 containerDiv.style.margin = '0.5rem';
                 containerDiv.style.flex = '1';
+                containerDiv.style.position = 'relative';
 
-                if (width <= 768) {
+                if (isSM) {
                     containerDiv.style.flexBasis = '100%';
-                } else if (width <= 1440) {
+                    containerDiv.style.width = '100%';
+                } else if (isMD) {
                     containerDiv.style.flexBasis = 'calc(50% - 4rem)';
                 } else {
                     containerDiv.style.flexBasis = 'calc(33% - 4rem)';
                 }
 
                 const titleDiv = document.createElement('h3');
-                titleDiv.innerHTML = title;
-                titleDiv.style.padding = '0 0 0.5rem';
+                if (!isTwitter) {
+                    titleDiv.innerHTML = title;
+                }
+                titleDiv.style.padding = '0';
+                titleDiv.style.marginBottom = '0';
 
                 const contentDiv = document.createElement('div');
+                contentDiv.style.width = '100%';
 
-                if (author === 'YouTube' && link && desc && desc.indexOf('<iframe') == -1) {
-                    console.log('here', title, link);
+                if (isYoutube) {
                     let youTubeVideoId = extractVideoID(link);
                     if (youTubeVideoId) {
-                        console.log('here1', youTubeVideoId);
                         desc = ytTemplate.replace('YT_VIDEO_ID_MACRO', youTubeVideoId);
                     }
                 }
+
                 contentDiv.innerHTML = desc;
+
+                const overlayDiv = document.createElement('div');
+                overlayDiv.style.position = 'absolute';
+                overlayDiv.style.height = '100%';
+                overlayDiv.style.width = '100%';
+                overlayDiv.style.left = '0';
+                overlayDiv.style.top = '0';
+
+                overlayDiv.addEventListener('click', (e) => {
+                    if (isTwitter) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                    }
+                });
 
                 containerDiv.appendChild(titleDiv);
                 containerDiv.appendChild(contentDiv);
+                //containerDiv.appendChild(overlayDiv);
 
                 slot.appendChild(containerDiv);
+            }
+
+            const renderAd = (slot) => {
+                const adDiv = document.createElement('div');
+                adDiv.id = `div-gpt-ad-1594197321299-${adId}`;
+                adId++;
+
+                window.googletag = window.googletag || {cmd: []};
+                googletag.cmd.push(function () {
+                    googletag.defineSlot('/102101596/Test_300x250', [300, 250], adDiv.id).addService(googletag.pubads());
+                    googletag.pubads().enableSingleRequest();
+                    googletag.enableServices();
+                    googletag.display(adDiv.id);
+                });
+
+                const contentDiv = document.createElement('div');
+                contentDiv.style.display = 'flex';
+                contentDiv.style.justifyContent = 'center';
+                contentDiv.style.alignItems = 'center';
+
+                contentDiv.appendChild(adDiv);
+                slot.appendChild(contentDiv);
             }
 
             const renderFeed = (feeds, width) => {
@@ -65,7 +130,12 @@
                 slot.style.display = 'flex';
                 slot.style.flexDirection = 'row';
                 slot.style.flexWrap = 'wrap';
-                for (const feed of feeds) {
+                slot.style.width = '100%';
+                for (const index in feeds) {
+                    const feed = feeds[index];
+                    if (index % 5 === 0 && index > 0) {
+                        renderAd(slot);
+                    }
                     renderItem(slot, feed, width);
                 }
             }
@@ -93,13 +163,6 @@
                 return feed;
             }
 
-            const runTwitterScript = () => {
-                const link = 'https://platform.twitter.com/widgets.js';
-                const newScript = document.createElement("script");
-                newScript.setAttribute('src', link);
-                document.body.appendChild(newScript);
-            }
-
             const loadFeeds = async () => {
                 if (currentFeeds >= maxFeeds) {
                     return;
@@ -121,7 +184,7 @@
                         elementObserved = null;
                     }
                     await getAndRenderFeed(feedId);
-// Fetch New Feeds if the current is over
+                    // Fetch New Feeds if the current is over
                     if (!listOfFeeds.length) {
                         await loadFeeds();
                     }
@@ -140,6 +203,7 @@
                 elementObserved = target;
             }
 
+            addAdScript();
             await loadFeeds();
             await loadNextFeed([], null, true);
             await resetInteractionObserver();
@@ -149,15 +213,17 @@
     })("inaaj-feed", "http://54.145.120.161:9100", "http://inaaj.b-cdn.net", "hing", 2);
 </script>
 
-<!--<script data-cfasync="false">
+<script data-cfasync="false">
     var tag_tc_google_sample = "https://pubads.g.doubleclick.net/gampad/ads?sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&cust_params=deployment%3Ddevsite%26sample_ct%3Dlinearvpaid2js&correlator=[timestamp]";
     var tag_inaaj_test = "https://pubads.g.doubleclick.net/gampad/ads?iu=/102101596/Test_300x250&description_url=https://timesnownews.com&tfcd=0&npa=0&sz=300x250%7C400x300&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&correlator=1234533&vpmute=0&vpa=0&vpos=preroll"
-    var tagObj = [
-        {"tag": tag_inaaj_test, "network": "inaaj_test"}
-    ];
+    var tag_karan_test = "https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-3737030722290655&slotname=CM_PDL_MPC_videotag&ad_type=video&description_url=https%3A%2F%2Fmpcnews.in%2F&max_ad_duration=30000&videoad_start_delay=0&vpmute=0&vpa=0"
 
+    var tagObj = [
+        /*{"tag": tag_inaaj_test, "network": "inaaj_test"}*/
+    ];
+    //tc-inaaj.web.app, tc-player-inaaj.b-cdn.net
     (function (t, i, s, a) {
-        var c = 'script', src = 'https://tc-pubtest.firebaseapp.com', E = window, m = document;
+        var c = 'script', src = 'https://tc-inaaj.web.app', E = window, m = document;
         E[t] = E[t] || {};
         b = m.getElementsByTagName(c)[0];
         m = m.createElement(c);
@@ -171,7 +237,9 @@
     })("tcEmbed", {
         ed: "jCsxHFDKTlmnRFXDB49wPysOG7mCHyUThs7p7v6m/323ygYDn5XgwnzFu3RQGCubZ3t37SpuY3HvAf5A1k+F0Q==",
         pId: "",
-        s: 2
+        s: 2,
+        st: 30,
+        w: true
     }, 2, tagObj);
-</script>-->
+</script>
 </html>
