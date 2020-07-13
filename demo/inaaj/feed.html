@@ -6,7 +6,7 @@
 
 <div id="inaaj-feed"></div>
 <script>
-    ((id = 'adUnit', baseUrl, cdnUrl, category = 'hing', maxFeeds = 2) => {
+    ((id = 'adUnit', baseUrl, cdnUrl, category = 'hing', maxFeeds = 2, showAds = false) => {
         const init = async () => {
             const shownFeeds = [];
             let currentFeeds = 0;
@@ -79,28 +79,31 @@
 
                 contentDiv.innerHTML = desc;
 
-                const overlayDiv = document.createElement('div');
-                overlayDiv.style.position = 'absolute';
-                overlayDiv.style.height = '100%';
-                overlayDiv.style.width = '100%';
-                overlayDiv.style.left = '0';
-                overlayDiv.style.top = '0';
-
-                overlayDiv.addEventListener('click', (e) => {
-                    if (isTwitter) {
-                        e.preventDefault();
-                        e.stopPropagation();
-                    }
-                });
-
                 containerDiv.appendChild(titleDiv);
                 containerDiv.appendChild(contentDiv);
-                //containerDiv.appendChild(overlayDiv);
+                if (isTwitter) {
+                    const overlayDiv = document.createElement('div');
+                    overlayDiv.style.position = 'absolute';
+                    overlayDiv.style.height = '100%';
+                    overlayDiv.style.width = '100%';
+                    overlayDiv.style.left = '0';
+                    overlayDiv.style.top = '0';
 
+                    overlayDiv.addEventListener('click', (e) => {
+                        if (isTwitter) {
+                            e.preventDefault();
+                            e.stopPropagation();
+                        }
+                    });
+                    containerDiv.appendChild(overlayDiv);
+                }
                 slot.appendChild(containerDiv);
             }
 
-            const renderAd = (slot) => {
+            const renderAd = (slot, width) => {
+                if (!showAds) {
+                    return;
+                }
                 const adDiv = document.createElement('div');
                 adDiv.id = `div-gpt-ad-1594197321299-${adId}`;
                 adId++;
@@ -110,16 +113,20 @@
                     googletag.defineSlot('/102101596/Test_300x250', [300, 250], adDiv.id).addService(googletag.pubads());
                     googletag.pubads().enableSingleRequest();
                     googletag.enableServices();
-                    googletag.display(adDiv.id);
                 });
 
                 const contentDiv = document.createElement('div');
                 contentDiv.style.display = 'flex';
                 contentDiv.style.justifyContent = 'center';
                 contentDiv.style.alignItems = 'center';
+                contentDiv.style.width = '100%';
 
                 contentDiv.appendChild(adDiv);
                 slot.appendChild(contentDiv);
+
+                window.googletag.cmd.push(function () {
+                    googletag.display(adDiv.id);
+                })
             }
 
             const renderFeed = (feeds, width) => {
@@ -134,7 +141,7 @@
                 for (const index in feeds) {
                     const feed = feeds[index];
                     if (index % 5 === 0 && index > 0) {
-                        renderAd(slot);
+                        renderAd(slot, width);
                     }
                     renderItem(slot, feed, width);
                 }
@@ -203,14 +210,16 @@
                 elementObserved = target;
             }
 
-            addAdScript();
+            if (showAds) {
+                addAdScript();
+            }
             await loadFeeds();
             await loadNextFeed([], null, true);
             await resetInteractionObserver();
         }
 
         init().then();
-    })("inaaj-feed", "http://54.145.120.161:9100", "http://inaaj.b-cdn.net", "hing", 2);
+    })("inaaj-feed", "http://54.145.120.161:9100", "http://inaaj.b-cdn.net", "hing", 2, true);
 </script>
 
 <script data-cfasync="false">
