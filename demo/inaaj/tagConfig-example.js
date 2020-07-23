@@ -47,4 +47,4 @@
             }
         });
     }
-})(undefined);
+})('http://demo.techcrumb.in/demo/inaaj/tag.js');
