@@ -3,10 +3,13 @@
       baseUrl,
       cdnUrl,
       category = 'hing',
+      fetchCount = 5,
       maxFeeds = 2,
+      batchSize = 2,
+      maxPosts = 12,
       showAds = false,
       waitFor = 0,
-      loadPixel,
+      loadPixel = 'https://trac.performoo.com/capture?type=Feed&action=Load&ed=aRxZjM6NHc7SKivcTV5a2L%2B4ewQVUfkyYWcT3fUJThkqWrSLSpxgC9ElozqFvzuyCWRqunDaVdfJw0%2By4ZvvyQ%3D%3D&category=[CATEGORY]&meta1=[FEED_TYPE]&srcURL=[SITE_DOMAIN]&cb=[CACHE_BUSTER_MS]',
       showBranding,
       brandingCTA,
       native,
@@ -24,15 +27,16 @@
         let adId = 0;
         let feedsShown = 0;
         let listOfFeeds = [];
+        let feedList = [];
         let elementObserved = null;
         const tc_player_main = "https://tc-inaaj.web.app/main.js"
-        let ytTemplate = "<div><div><div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;\"><iframe src=\"https://www.youtube.com/embed/YT_VIDEO_ID_MACRO\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen scrolling=\"no\" allow=\"encrypted-media\"></iframe></div></div></div>"
+        let ytTemplate = "<div><div><div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;\"><iframe src=\"https://www.youtube.com/embed/YT_VIDEO_ID_MACRO?playsinline=1\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen scrolling=\"no\" allow=\"encrypted-media\"></iframe></div></div></div>"
         const tagObj = [
             /*{"tag": tag_inaaj_test, "network": "inaaj_test"}*/
         ];
         const vastTag = tagObj && tagObj.length === 1 ? tagObj[0] : null
         const player_settings = {
-            ed: "jCsxHFDKTlmnRFXDB49wPysOG7mCHyUThs7p7v6m/323ygYDn5XgwnzFu3RQGCubZ3t37SpuY3HvAf5A1k+F0Q==",
+            ed: "jCsxHFDKTlmnRFXDB49wP+vPG6HECVM5c/qYcrrtY9e3v22m0e9m8dV2ey5kwfDZZ3t37SpuY3HvAf5A1k+F0Q==",
             s: 2, // It should always be 2
             st: 30,
             ys: 2, //youtube-style
@@ -253,22 +257,10 @@
                     case 'ADX': {
                         const {googleAdClient, googleAdSlot, width, height} = ADX;
                         const adDiv = currentDocument.createElement('div');
-
-                        const configScript = currentDocument.createElement('script');
-                        configScript.text = `
-                        google_ad_client = "${googleAdClient}";
-                        google_ad_slot = "${googleAdSlot}";
-                        google_ad_width = ${width};
-                        google_ad_height = ${height};
-                    `;
-                        adDiv.appendChild(configScript);
-
-                        const loadScript = currentDocument.createElement("script");
-                        loadScript.type = 'text/javascript';
-                        loadScript.setAttribute('src', '//pagead2.googlesyndication.com/pagead/show_ads.js');
-                        adDiv.appendChild(loadScript);
-
+                        adDiv.style.textAlign = 'center';
+                        adDiv.style.width = '100%';
                         slot.appendChild(adDiv);
+                        postscribe(adDiv, `<script>google_ad_client="${googleAdClient}";google_ad_slot="${googleAdSlot}";google_ad_width=${width};google_ad_height=${height};</script><script src="//pagead2.googlesyndication.com/pagead/show_ads.js"></script>`);
                         break;
                     }
                     default: {
@@ -281,6 +273,11 @@
         }
 
         const renderFeed = (feeds, width) => {
+            if(feedsShown>=maxPosts){
+                console.log("==>> maxPosts limit reached", maxPosts, feedsShown)
+                return;
+            }
+            console.log("==>> rendering feed posts", feeds)
             const {adAfter} = adConfig;
             for (const feed of feeds) {
                 if (showAds && feedsShown % adAfter === 0 && feedsShown > 0) {
@@ -289,6 +286,7 @@
                 renderItem(feed, width);
                 feedsShown++;
             }
+            console.log("==>> feedsShown so far..", feedsShown)
         }
 
         const fetchRequest = async (link) => {
@@ -297,19 +295,24 @@
         }
 
         const getFeeds = async () => {
-            return await fetchRequest(`${baseUrl}/feed/fetch?cat=${category}`);
+            return await fetchRequest(`${baseUrl}/feed/fetch?cat=${category}&max=${fetchCount}`);
         }
 
-        const getAndRenderFeed = async (id) => {
+        const getNextFeedList = async (id) => {
             if (!id || shownFeeds.includes(id)) {
-                return;
+                return [];
             }
             const feed = await fetchRequest(`${cdnUrl}/feed/get?id=${id}`);
-            if (!feed) {
-                return;
-            }
-            renderFeed(feed, parentContainer.offsetWidth);
             shownFeeds.push(id);
+            if (!feed) {
+                return [];
+            } else {
+                return feed;
+            }
+        }
+
+        const renderBatch = async (feed) => {
+            renderFeed(feed, parentContainer.offsetWidth);
             runTwitterScript();
         }
 
@@ -329,13 +332,22 @@
 
             if (firstLoad) {
                 try {
-                    const feedId = listOfFeeds.shift();
                     if (elementObserved) {
                         observer.unobserve(elementObserved);
                         elementObserved = null;
                     }
-                    await getAndRenderFeed(feedId);
-                    // Fetch New Feeds if the current is over
+
+                    if (feedList.length < batchSize) {
+                        const feedId = listOfFeeds.shift();
+                        feedList = feedList.concat(await getNextFeedList(feedId));
+                    }
+
+                    const nextList = feedList.splice(0, batchSize);
+                    console.log('Next List', nextList);
+                    if (nextList.length) {
+                        await renderBatch(nextList);
+                    }
+
                     if (!listOfFeeds.length) {
                         await loadFeeds();
                     }
@@ -366,13 +378,12 @@
             url = url.replace(/\[PAGE_URL]/gi, currentWindow.location.href);
             url = url.replace(/\[SITE_DOMAIN]/gi, currentWindow.location.origin);
             url = url.replace(/\[CATEGORY]/gi, category);
+            url = url.replace(/\[FEED_TYPE]/gi, native ? 'native' : 'autoplay');
             const pixel = new Image();
             pixel.src = url;
         }
 
         const renderBranding = (container) => {
-            // const {color, backgroundColor} = brandingConfig;
-
             if (!showBranding) {
                 return;
             }
