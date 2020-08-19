@@ -67,7 +67,7 @@
                             aspectRatio: 9 / 16,
                             style: player_settings.ys,
                             ytVideoId: ytVideoId,
-                            vastTag,
+                            adToRun: vastTag,
                             networkID: vastTag ? vastTag.network : null,
                             ed: player_settings.ed,
                             settingConfig: player_settings.s,
@@ -126,8 +126,8 @@
             const isMD = !isSM && width <= 1440;
 
             const containerDiv = currentDocument.createElement('div');
-            containerDiv.style.padding = '0.5rem';
-            containerDiv.style.border = '1px solid #aaa';
+            containerDiv.style.padding = '0.5rem 0';
+            // containerDiv.style.border = '1px solid #aaa';
             containerDiv.style.margin = '0.5rem 0';
             containerDiv.style.flex = '1';
             containerDiv.style.position = 'relative';
@@ -142,12 +142,13 @@
                 containerDiv.style.flexBasis = 'calc(33% - 4rem)';
             }
 
-            const titleDiv = currentDocument.createElement('h3');
+            const titleDiv = currentDocument.createElement('div');
             if (!isTwitter) {
                 titleDiv.innerHTML = title;
             }
-            titleDiv.style.padding = '0';
-            titleDiv.style.marginBottom = '0';
+            titleDiv.style.fontWeight = 'bold';
+            titleDiv.style.textAlign = 'center';
+            // titleDiv.style.marginBottom = '0';
 
             const contentDiv = currentDocument.createElement('div');
             contentDiv.style.width = '100%';
@@ -173,7 +174,7 @@
                     contentDiv.style.height = 'unset';
                     contentDiv.style.width = `${(() => {
                         if (isSM) {
-                            return width * 0.88;
+                            return width * 0.98;
                         }
                         if (isMD) {
                             return width * 0.456;
@@ -422,8 +423,8 @@
             return;
         }
         parentContainer.style.width = '100%';
-        parentContainer.style.border = '1px solid rgba(0,0,0,0.5)';
-        parentContainer.style.borderRadius = '5px';
+        // parentContainer.style.border = '1px solid rgba(0,0,0,0.5)';
+        // parentContainer.style.borderRadius = '5px';
 
         let slot, currentDocument, currentWindow;
 

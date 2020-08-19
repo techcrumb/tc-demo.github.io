@@ -20,8 +20,10 @@
             baseUrl: "https://feed.inaaj.org",
             cdnUrl: "https://cdn.inaaj.org",
             category: searchParams.get('cat') || "hing",
-            fetchCount:5,
-            maxFeeds: 25,
+            fetchCount:1,
+            maxFeeds: 1,
+            batchSize: 2,
+            maxPosts:4,
             showAds: true,
             adConfig: {
                 adAfter: 2,
@@ -41,7 +43,7 @@
             },
             waitFor: 0,
             // loadPixel: 'https://trac.performoo.com/capture?type=Feed&action=Load&ed=PFwTjfNBBynJCZH%2Fcsi6GA%2BzwpApGhcW39A19Za8C6M6cKQ0AMi7SurH7yXhUBsr&category=[CATEGORY]&meta1=[FEED_TYPE]&srcURL=[SITE_DOMAIN]&cb=[CACHE_BUSTER_MS]',
-            showBranding: true,
+            showBranding: false,
             brandingCTA: 'https://www.inaaj.org',
             native: Number(searchParams.get('n')) !== 0,
             iframe: false,
@@ -50,8 +52,7 @@
                 color: 'black',
                 borderBottom: '1px solid black',
                 borderRadius: '1px'
-            },
-            batchSize: 2
+            }
         });
     }
 })("tag.js");
