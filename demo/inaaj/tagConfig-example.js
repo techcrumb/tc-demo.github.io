@@ -23,7 +23,7 @@
             fetchCount:1,
             maxFeeds: 1,
             batchSize: 2,
-            maxPosts:4,
+            maxPosts:8,
             showAds: true,
             adConfig: {
                 adAfter: 2,

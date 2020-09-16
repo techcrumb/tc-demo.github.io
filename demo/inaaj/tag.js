@@ -9,12 +9,14 @@
       maxPosts = 12,
       showAds = false,
       waitFor = 0,
-      loadPixel = 'https://trac.performoo.com/capture?type=Feed&action=Load&ed=aRxZjM6NHc7SKivcTV5a2L%2B4ewQVUfkyYWcT3fUJThkqWrSLSpxgC9ElozqFvzuyCWRqunDaVdfJw0%2By4ZvvyQ%3D%3D&category=[CATEGORY]&meta1=[FEED_TYPE]&srcURL=[SITE_DOMAIN]&cb=[CACHE_BUSTER_MS]',
+      loadPixel = 'https://trac.performoo.com/capture?type=Feed&action=[ACTION]&ed=aRxZjM6NHc7SKivcTV5a2L%2B4ewQVUfkyYWcT3fUJThkqWrSLSpxgC9ElozqFvzuyCWRqunDaVdfJw0%2By4ZvvyQ%3D%3D&category=[CATEGORY]&meta1=[FEED_TYPE]&meta2=[POSTS_RENDERED]&meta3=[TIME_ELAPSED_SEG]&srcURL=[SITE_DOMAIN]&cb=[CACHE_BUSTER_MS]',
       showBranding,
       brandingCTA,
       native,
       adConfig = {},
       iframe = false,
+      vastAdTag,
+      gaId,
       brandingConfig = {
           backgroundColor: 'rgba(0,0,0,0.8)',
           textColor: 'black',
@@ -26,22 +28,42 @@
         let currentFeeds = 0;
         let adId = 0;
         let feedsShown = 0;
+        let isGATriggered = false;
         let listOfFeeds = [];
         let feedList = [];
         let elementObserved = null;
         const tc_player_main = "https://tc-inaaj.web.app/main.js"
+        const initTimestamp = new Date();
         let ytTemplate = "<div><div><div style=\"left: 0; width: 100%; height: 0; position: relative; padding-bottom: 56.25%;\"><iframe src=\"https://www.youtube.com/embed/YT_VIDEO_ID_MACRO?playsinline=1\" style=\"border: 0; top: 0; left: 0; width: 100%; height: 100%; position: absolute;\" allowfullscreen scrolling=\"no\" allow=\"encrypted-media\"></iframe></div></div></div>"
-        const tagObj = [
-            /*{"tag": tag_inaaj_test, "network": "inaaj_test"}*/
-        ];
-        const vastTag = tagObj && tagObj.length === 1 ? tagObj[0] : null
+
+        const elapsedTime = () => {
+            return new Date() - initTimestamp;
+        }
+
+        const elapsedTimeSeg = () => {
+            const et=elapsedTime()/1000;
+            if(et<120){
+                return Math.round(et/15)*15+'s'
+            }else if(et<600){
+                return Math.round(et/60)+'m'
+            }else if(et<1800){
+                return Math.round(et/300)*5+'m'
+            }else{
+                return '30m+'
+            }
+        }
+
+
+        setTimeout(() => {
+            console.log(elapsedTime());
+        }, 1000)
+
         const player_settings = {
             ed: "jCsxHFDKTlmnRFXDB49wP+vPG6HECVM5c/qYcrrtY9e3v22m0e9m8dV2ey5kwfDZZ3t37SpuY3HvAf5A1k+F0Q==",
             s: 2, // It should always be 2
             st: 30,
             ys: 2, //youtube-style
-            logo: {},
-            tagObj
+            logo: {}
         }
         const appendMainScript = () => {
             const s = currentDocument.createElement("script");
@@ -67,8 +89,8 @@
                             aspectRatio: 9 / 16,
                             style: player_settings.ys,
                             ytVideoId: ytVideoId,
-                            adToRun: vastTag,
-                            networkID: vastTag ? vastTag.network : null,
+                            adToRun: vastAdTag,
+                            networkID: vastAdTag ? vastAdTag.network : null,
                             ed: player_settings.ed,
                             settingConfig: player_settings.s,
                             logo: player_settings.logo,
@@ -274,11 +296,15 @@
         }
 
         const renderFeed = (feeds, width) => {
-            if(feedsShown>=maxPosts){
-                console.log("==>> maxPosts limit reached", maxPosts, feedsShown)
+            if (feedsShown >= maxPosts) {
                 return;
             }
-            console.log("==>> rendering feed posts", feeds)
+            if (!isGATriggered && gaId && feedsShown > 2) {
+                tirggerGA(gaId);
+                isGATriggered = true;
+                firePixel(loadPixel, 'GA');
+            }
+
             const {adAfter} = adConfig;
             for (const feed of feeds) {
                 if (showAds && feedsShown % adAfter === 0 && feedsShown > 0) {
@@ -287,7 +313,11 @@
                 renderItem(feed, width);
                 feedsShown++;
             }
-            console.log("==>> feedsShown so far..", feedsShown)
+            if (feedsShown >= maxPosts) {
+                firePixel(loadPixel, 'Finish');
+            }else{
+                firePixel(loadPixel, 'Render');
+            }
         }
 
         const fetchRequest = async (link) => {
@@ -355,7 +385,11 @@
                 } catch (e) {
                     // Error Loading Feeds
                 } finally {
-                    await resetInteractionObserver();
+                    if (feedsShown >= maxPosts) {
+                        observer.disconnect();
+                    } else {
+                        await resetInteractionObserver();
+                    }
                 }
             }
         }
@@ -371,18 +405,40 @@
             elementObserved = target;
         }
 
-        const firePixel = (url) => {
+        const firePixel = (url, action) => {
             if (!url) {
                 return;
             }
+            url = url.replace(/\[ACTION]/gi, action);
             url = url.replace(/\[CACHE_BUSTER_MS]/gi, +new Date());
             url = url.replace(/\[PAGE_URL]/gi, currentWindow.location.href);
             url = url.replace(/\[SITE_DOMAIN]/gi, currentWindow.location.origin);
             url = url.replace(/\[CATEGORY]/gi, category);
             url = url.replace(/\[FEED_TYPE]/gi, native ? 'native' : 'autoplay');
+            url = url.replace(/\[POSTS_RENDERED]/gi, feedsShown);
+            url = url.replace(/\[TIME_ELAPSED_SEG]/gi, elapsedTimeSeg());
             const pixel = new Image();
             pixel.src = url;
         }
+
+        const tirggerGA = (gaID) => {
+            console.log("==>> Triggering GA.")
+            window.history.replaceState(null, null, "?inaajwidget=1");
+            (function (i, s, o, g, r, a, m) {
+                i['GoogleAnalyticsObject'] = r;
+                i[r] = i[r] || function () {
+                    (i[r].q = i[r].q || []).push(arguments)
+                }, i[r].l = 1 * new Date();
+                a = s.createElement(o),
+                    m = s.getElementsByTagName(o)[0];
+                a.async = 1;
+                a.src = g;
+                m.parentNode.insertBefore(a, m)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', gaID);
+            ga('send', 'pageview');
+        }
+
 
         const renderBranding = (container) => {
             if (!showBranding) {
@@ -465,7 +521,7 @@
         if (showAds) {
             addAdScript();
         }
-        firePixel(loadPixel);
+        firePixel(loadPixel, 'Load');
         if (!native) {
             appendMainScript();
         }
