@@ -83,18 +83,17 @@
 </div>
 
 <script data-cfasync="false">
-    var tag_inaaj = "https://googleads.g.doubleclick.net/pagead/ads?client=ca-video-pub-3737030722290655&slotname=Inaaj_Video_Tag&ad_type=video_text_image&description_url=https%3A%2F%2Fwww.inaaj.org%2F&max_ad_duration=30000&videoad_start_delay=0&vpmute=1&vpa=1"
     var google_ima_sample = 'https://pubads.g.doubleclick.net/gampad/ads?' +
         'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
         'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
         'cust_params=deployment%3Ddevsite%26sample_ct%3Dlinear&correlator=';
 
     var tagObj = [
-        {"tag": google_ima_sample, "network": "google", instreamAdFormat: "MIDROLL", startSeconds: 5}
+        {"tag": google_ima_sample, "network": "google"}
     ];
 
     (function (t, i, s, a) {
-        var c = 'script', src = 'https://tc-vai-qa.web.app', E = window, m = document;
+        var c = 'script', src = 'https://tc-vastos.web.app', E = window, m = document;
         E[t] = E[t] || {};
         b = m.getElementsByTagName(c)[0];
         m = m.createElement(c);
@@ -111,7 +110,7 @@
         waitTime: 2,
         pId: "",
         s: 2, w:false,
-        slidePosition: "lb",
+        slidePosition: "rb",
         pb: 1
     }, 2, tagObj);
 </script>
