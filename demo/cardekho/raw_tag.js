@@ -1,5 +1,5 @@
 (function (t, i, s, a) {
-    var c = 'script', src = 'https://tc-vai.web.app', E = window, m = document;
+    var c = 'script', src = 'https://plyr-b.performoo.com', E = window, m = document;
     try {
         m = E.top.document || m;
         E = E.top.document ? E.top : E;
@@ -41,12 +41,22 @@
     lookNFeel: {
         placement: {
             d: {h: 250, w: 300},
-            m: {h: 250, w: 300},
+            m: {h: 150, w: 200},
             slider: {
                 pos: "rb",
                 auto: true
             },
             z: 99998
         },
+        muteBtn: {
+            pos: {l: 68, t: 5},
+            text: 'CLICK TO UNMUTE'
+        },
+    },
+    autoPlay: {
+        type: 2,
+        unmute: {
+            dur: -1,
+        }
     }
 }, 3);
