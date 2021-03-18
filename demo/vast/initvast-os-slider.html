@@ -86,7 +86,7 @@
 </script>-->
 <script type="text/javascript" src="//tags.performoo.com/vastos/nw18.js" async="false"></script>
 
-<!-- <script data-cfasync="false">
+ <script data-cfasync="false">
     var tcNW18VastTag = 'https://pubads.g.doubleclick.net/gampad/ads?' +
         'sz=640x480&iu=/124319096/external/single_ad_samples&ciu_szs=300x250&' +
         'impl=s&gdfp_req=1&env=vp&output=vast&unviewed_position_start=1&' +
@@ -115,21 +115,45 @@
         waitTime: .1,
         pId: "",
         s: 2, w:true,
-        lnf: {//looknFeel
+        env: "prod",
+        lookNFeel: {//looknFeel
             placement: {
-                d:{h: 196, w: 350, mb: 70},
-                m:{h: 168, w: 300, mb: 70},
-                slider: "rb",
+                size: {
+                    d: {
+                        aspectRatio: '',
+                        fixed : {h: 196, w: 200},
+                        mb: 70
+                    },
+                    m: {
+                        aspectRatio: '',
+                        fixed : {h: 196, w: 350},
+                        mb: 70
+                    },
+                },
+                slider: {
+                    pos: "rb",
+                    auto: false,
+                    d:{maxW: 440, maxH: 440, mr: 70},
+                    m:{maxW: 277, maxH: 277, mr: 70}
+                },
                 z: 99998 //z-index
             },
+            muteBtn: {
+                pos: {l: 0, t: 0},
+                text: 'tap for unmute'
+            },
             controls: {
-                display: 'fixed'
+                display: 'fixed' //hover
             },
         },
-        pb: 2,
+        autoPlay: {
+            type: 2,
+            unmute: {
+                dur: 4,
+            }
+        },
     }, 2, tagObj);
-</script> -->
-
+</script>
 
 </BODY>
 </HTML>
