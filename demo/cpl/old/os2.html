@@ -43,7 +43,6 @@
         DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED
         DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED DEMO-CPL-EMBEDDED
 
-
     </p> <h1> below is the tag (for outstream test) </h1>
     <div id="tcAdSlot"></div>
     <p>
@@ -55,7 +54,7 @@
 
 <script data-cfasync="false">    
     (function (t, i, s, a) {
-    var c = 'script', src = 'https://tc-vai-qa.web.app', E = window, m = document;
+    var c = 'script', src = 'https://plyr-b.performoo.com', E = window, m = document;
     E[t] = E[t] || {};
     b = m.getElementsByTagName(c)[0];
     m = m.createElement(c);
@@ -73,8 +72,12 @@
     logo: {url: "", cta: ""},
     adSlot: 'tcAdSlot',
     waitTime: 2,
-    pb: 1
-}, 3);
+    autoPlay: {
+                type: -1, // -1: click to Play, 1,2: autoplay
+                unmute: {
+                    dur: -1, // Time after player is unmuted, -1 for no unmute
+                }
+            }}, 3);
 </script>
 
 </BODY>

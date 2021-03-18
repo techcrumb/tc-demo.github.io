@@ -77,8 +77,12 @@
     logo: {url: "", cta: ""},
     adSlot: 'tcAdSlot',
     waitTime: 2,
-    pb: 2
-}, 3);
+    autoPlay: {
+                type: 2, // -1: click to Play, 1,2: autoplay
+                unmute: {
+                    dur: 5, // Time after player is unmuted, -1 for no unmute
+                }
+            }}, 3);
 </script>
 
 </BODY>

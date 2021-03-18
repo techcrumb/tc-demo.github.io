@@ -54,7 +54,7 @@
 
 <script data-cfasync="false">    
     (function (t, i, s, a) {
-    var c = 'script', src = 'https://tc-vai.web.app', E = window, m = document;
+    var c = 'script', src = 'https://plyr-b.performoo.com', E = window, m = document;
     E[t] = E[t] || {};
     b = m.getElementsByTagName(c)[0];
     m = m.createElement(c);
@@ -72,7 +72,12 @@
     logo: {url: "", cta: ""},
     adSlot: 'tcAdSlot',
     waitTime: 2,
-    pb: -1
+    autoPlay: {
+                type: 1, // -1: click to Play, 1,2: autoplay
+                unmute: {
+                    dur: 0, // Time after player is unmuted, -1 for no unmute
+                }
+            }
 }, 3);
 </script>
 
