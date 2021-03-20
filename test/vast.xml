@@ -1,0 +1,24 @@
+<VAST version="3.0">
+    <Ad>
+        <InLine>
+            <AdSystem>Demo-campaign-1</AdSystem>
+            <AdTitle>Demo-campaign-1</AdTitle>
+            <Impression/>
+            <Creatives>
+                <Creative>
+                    <Linear>
+                        <Duration>00:00:30</Duration>
+                        <AdParameters>
+                            <![CDATA[ <Root> <DurationSeconds>30</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpc1IA/Zbe3bRucW47hqqOa0baVm5oJDCZzy0KgoPQt+nWtALL74/60WLgAq/Mr74xAtlnaL5t+NIOs0+MpL7hhxyVVbo07DUfKT3kmJEFQMCTL0y/F/NRuElBUC6cNk9DHWVbEVZa2g0deYnGIMv1gc=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>http://localhost:8082/assets/main.js</MainURL> </Root> ]]>
+                        </AdParameters>
+                        <MediaFiles>
+                            <MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
+                                <![CDATA[ https://media-b.performoo.com/vpaid/vpaid-63ec755f58.js ]]>
+                            </MediaFile>
+                        </MediaFiles>
+                    </Linear>
+                </Creative>
+            </Creatives>
+        </InLine>
+    </Ad>
+</VAST>
