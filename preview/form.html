@@ -96,14 +96,17 @@
 
 <script>
     let url = 'https://trac-b.performoo.com/capture';
+    let formSubmit = false;
     $(document).ready(function () {
         $('form').submit(function(e) {
             e.preventDefault();
-
-            $(".response").show()
-            const q = $(this).serialize();
-            const img = new Image();
-            img.src = url + '?' + q;
+            if (!formSubmit){
+                $(".response").show()
+                const q = $(this).serialize();
+                const img = new Image();
+                img.src = url + '?' + q;
+                formSubmit = true
+            }
         });
     });
 </script>
