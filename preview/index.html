@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+
+    <title>Performoo</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+        iframe {
+            width: 100%;
+            overflow: hidden;
+        }
+        .flex-container {
+            display: flex;
+            flex: 1;
+            flex-direction: row;
+            font-size: 30px;
+            text-align: center;
+        }
+
+        .flex-item-left {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 6;
+        }
+
+        .flex-item-right {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 4;
+        }
+
+        /* Responsive layout - makes a one column-layout instead of two-column layout */
+        @media (max-width: 800px) {
+            .flex-container {
+                flex-direction: column;
+            }
+        }
+        .videoContainer{
+            width: 70%;
+            margin: 50px auto
+        }
+        @media (max-width: 800px) {
+            .videoContainer{
+                width: 90%;
+                margin: 50px auto;
+            }
+        }
+
+        .formContainer{
+            width: 80%;
+            border-radius: 10px;
+            margin: 50px 10px
+        }
+        @media (max-width: 800px) {
+            .formContainer{
+                width: 95%;
+            }
+        }
+    </style>
+
+</head>
+<body>
+<div style="min-height: 100vh; display: flex; flex-direction: column">
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: white">
+        <a class="navbar-brand" href="#">
+            <img src="https://tc-utils.s3.ap-south-1.amazonaws.com/logos-performoo/orange.png" width="180" alt="">
+        </a>
+    </nav>
+
+    <div class="bg-light flex-container">
+        <div class="flex-item-left">
+            <div class="videoContainer">
+                <script src='https://tags-b.performoo.com/tag/in/2c9f986e784abbb501784bc10839000f'></script>
+            </div>
+        </div>
+        <div class="flex-item-right">
+            <iframe class="formContainer" onload="resizeIframe(this)" src="form.html" frameborder="0"></iframe>
+        </div>
+    </div>
+</div>
+
+<script>
+    function resizeIframe(obj) {
+        obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
+        obj.style.width = obj.contentWindow.document.documentElement.scrollWidth + 'px';
+    }
+</script>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<!--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"-->
+<!--        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"-->
+<!--        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"-->
+<!--        crossorigin="anonymous"></script>-->
+<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"-->
+<!--        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"-->
+<!--        crossorigin="anonymous"></script>-->
+</body>
+</html>
