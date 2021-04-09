@@ -98,6 +98,10 @@
     let url = 'https://trac-b.performoo.com/capture';
     let formSubmit = false;
     $(document).ready(function () {
+        var height = document.documentElement.scrollHeight + 'px'
+        var width = document.documentElement.scrollWidth + 'px'
+
+        window.top.postMessage(JSON.stringify({type: "formDim", height: height, width: width}), '*');
         $('form').submit(function(e) {
             e.preventDefault();
             if (!formSubmit){
