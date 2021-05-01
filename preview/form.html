@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .response{
+            display: flex;
+            z-index: 5;
+            background-color: #EAEFF2;
+            align-items: center;
+            justify-content: center;
+            position: absolute;
+            height: 100%;
+            top: 0;
+            left: 0;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+<div id="container" style="background-color: #EAEFF2;padding: 15px;">
+    <div class="response" style="display: none">
+        <div>
+            Thank-you. We will connect, soon!
+        </div>
+    </div>
+    <div style="background:lightgray; text-align:center; margin-bottom:5px; font-size:16px">Do you want <strong>Video Interactivity</strong> for your videos too?</div>
+    <div style="text-align:center; margin-bottom:10px; font-size:12px">Let us connect with you.</div>
+    <form>
+        <input type="hidden" name="action" value="Submit">
+        <input type="hidden" name="sitedomain" value="">
+        <input type="hidden" name="ed" value="eA9aM3rETEUM6yZLlb4u+zy9Xl237YG0KBC9Bfkmeei2JmrgZQYw6s1VL/oxXnY3Cc6sAHo76ckQFV/IrXO2BhCaUySDbBpv9E3ZMIyvO7zxVO9h42YuP6iFgOprdbVGpDPTbvuNP4EFe+Kf+/Fwuk8HmpN0VTwDOc+3hHUDk7ISJaE2odc4FcFvv7j3F4dIe4YNIM6Yx0HzNwu0XkRVR33hHcXDBiJZbzNBfMpXtGAns1zcZD+TnLjWIb7KcUTcUIAt8IoAcP0VbHe6a7SetQ==">
+        <input type="hidden" name="event" value="form">
+
+        <div class="form-group row">
+            <label for="ff_email" class="col-sm-2 col-form-label">Your Email</label>
+            <div class="col-sm-10">
+                <input type="email" name="ff_email" class="form-control" id="ff_email" placeholder="Email" required>
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="ff_phone" class="col-sm-2 col-form-label">Your Phone</label>
+            <div class="col-sm-10">
+                <input type="number" name="ff_phone" class="form-control" id="ff_phone" placeholder="Phone" required>
+            </div>
+        </div>
+        <fieldset class="form-group">
+            <div class="row">
+                <legend class="col-form-label col-sm-2 pt-0">Your Occupation</legend>
+                <div class="col-sm-10">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ff_role" id="Publisher" value="Publisher">
+                        <label class="form-check-label" for="Publisher">Publisher</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ff_role" id="Marketer" value="Marketer">
+                        <label class="form-check-label" for="Marketer">Marketer</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ff_role" id="Agency" value="Agency">
+                        <label class="form-check-label" for="Agency">Agency</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="ff_role" id="Other" value="Other">
+                        <label class="form-check-label" for="Other">Other</label>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+        <div class="form-group row">
+            <div class="col-sm-10" style="text-align:center;">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+    let url = 'https://trac-b.performoo.com/capture';
+    let formSubmit = false;
+    $(document).ready(function () {
+        var height = document.documentElement.scrollHeight + 'px'
+        var width = document.documentElement.scrollWidth + 'px'
+
+        window.top.postMessage(JSON.stringify({type: "formDim", height: height, width: width}), '*');
+        $('form').submit(function(e) {
+            e.preventDefault();
+            if (!formSubmit){
+                $(".response").show()
+                const q = $(this).serialize();
+                const img = new Image();
+                img.src = url + '?' + q;
+                formSubmit = true
+            }
+        });
+    });
+</script>
+
+<!--
+https://trac-b.performoo.com/capture?
+ff_email=kapilgpt06%40gmail.com&
+ff_phone=9911985893&
+ff_role=Advertiser&
+action=Submit&
+ed=eA9aM3rETEUM6yZLlb4u%2BwHqPJRnobixv3t7Cvi%2BwDZw1om2%2B7m1DzItUTjoEUN8ssudUvwESHbqu3QNPv1JR2UieofFnKkJSPtyBnzBeOweMUlloEldDAsPlwTjdOpCd4RfC1QD%2Bxox4NGm4HiXwCo2Ko5HgrHjT0JeZY4bSC4nZoskEzyJWKY6KwPQWq6lIhzQxQ7VO8cZga%2Fn%2FumKiCJ3QUC522Hn%2FhZY7GY41mEouKJAKhj%2B3Mt4GJQh9NTZUIAt8IoAcP0VbHe6a7SetQ%3D%3D&
+event=form&
+sitedomain=beta.performoo.com&
+tzName=Asia%2FCalcutta&
+tzOffset=-330&
+purl=https%3A%2F%2Fbeta.performoo.com%2F&
+cacheBuster=1617899678765
+-->
+</body>
+</html>
