@@ -9,11 +9,11 @@
                     <Linear>
                         <Duration>00:00:07</Duration>
                         <AdParameters>
-                            <![CDATA[ <Root> <env>b</env> <DurationSeconds>7</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpc1IA/Zbe3bRucW47hqqOa0baVm5oJDCZzy0KgoPQt+n6RdFydzEKThaeo3VCNBuzLxtHGUgBu3eEgM/fE/rO9uCkF0bWPYzfi9zc7r2tG1bEHwsSlrV9sSwbO6uzJUL/D4e7pVIg/24rqtu8s5Qy+7X1o4FXentFtDIkOo7OAbINOZsE4LuI3dTNOKxaYwle1lKhbZlZ0ujMBrXpT88ldZu7sxRZ0d5zerQB3x0bg3KnQHP0fk/GkqJ95vJr5Rr7EGde2EYVKuIyS+T0HhCVPs=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>https://056c1e275a5d.ngrok.io/dist/main.js</MainURL> <tid>2c9f986e77dea6510177ed201234018d</tid> </Root> ]]>
+                            <![CDATA[ <Root> <env>b</env> <DurationSeconds>7</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpc1IA/Zbe3bRucW47hqqOa0baVm5oJDCZzy0KgoPQt+n6RdFydzEKThaeo3VCNBuzLxtHGUgBu3eEgM/fE/rO9uCkF0bWPYzfi9zc7r2tG1bEHwsSlrV9sSwbO6uzJUL/D4e7pVIg/24rqtu8s5Qy+7X1o4FXentFtDIkOo7OAbINOZsE4LuI3dTNOKxaYwle1lKhbZlZ0ujMBrXpT88ldZu7sxRZ0d5zerQB3x0bg3KnQHP0fk/GkqJ95vJr5Rr7EGde2EYVKuIyS+T0HhCVPs=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>https://a7109fc57926.ngrok.io/dist/main.js</MainURL> <tid>2c9f986e77dea6510177ed201234018d</tid> </Root> ]]>
                         </AdParameters>
                         <MediaFiles>
                             <MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
-                                <![CDATA[ https://056c1e275a5d.ngrok.io/playerLoader/tcvpaid.js ]]>
+                                <![CDATA[ https://a7109fc57926.ngrok.io/playerLoader/tcvpaid.js ]]>
                             </MediaFile>
                         </MediaFiles>
                     </Linear>
