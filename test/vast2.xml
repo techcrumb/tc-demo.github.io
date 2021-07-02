@@ -13,7 +13,7 @@
                         </AdParameters>
                         <MediaFiles>
                             <MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
-                                <![CDATA[ https://19577cfe84f1.ngrok.io/playerLoader/tcvpaid.js ]]>
+                                <![CDATA[ https://yaas-dev.s3.ap-south-1.amazonaws.com/tcvpaid.js ]]>
                             </MediaFile>
                         </MediaFiles>
                     </Linear>
