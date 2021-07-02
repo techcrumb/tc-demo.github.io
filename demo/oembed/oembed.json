@@ -1,0 +1,15 @@
+{
+  "type": "video",
+  "version": "1.0",
+  "html": "<iframe src=\"https://tags-b.performoo.com/tag/em/2c9f986e78b000180178b06d33780036\" frameborder=\"0\" width=\"1280\" height=\"960\" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>",
+  "height": 960,
+  "width": 1280,
+  "provider_name": "Performoo",
+  "provider_url": "https://www.performoo.com",
+  "thumbnail_height": 960,
+  "thumbnail_width": 1280,
+  "thumbnail_url": "https://media-b.performoo.com/2c9f986e70e360710170e878076e0071/2c9f986e78badd550178c1676c1800fb/dRE3De8F/thumbnail/mq.png",
+  "duration": 2446,
+  "title": "My sample video oembed html",
+  "description": ""
+}
