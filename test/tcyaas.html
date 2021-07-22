@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tcnew</title>
+</head>
+<body>
+<script>
+    (function (i) {
+        let src = 'https://tc-yaas-f.b-cdn.net', m = document;
+        i.elId = "tc_" + i.videoId + "_div"
+
+        if (!m.getElementById(i.elId)) {
+            if (self===top){
+                m.write("<div id='" + i.elId + "'></div>");
+            }else{
+                let tcAdSlotDiv = m.createElement('div');
+                tcAdSlotDiv.setAttribute("id", i.elId);
+                m.body.appendChild(tcAdSlotDiv);
+            }
+        }
+
+        const setupVideo = function(){TC_YAAS.setupVideo({i, src})}
+
+        let script = m.createElement('script');
+        script.async = 1;
+        script.src = src + "/tcInitVideo.js";
+        script.onload = setupVideo;
+        script.onreadystatechange = setupVideo;
+        m.head.appendChild(script)
+    })({
+        env: 'b',
+        videoId: '2c9f986e784abbb501784bc10839000f',
+        lnf: {d: '2c9f986e77de131d0177de1487320004', m: '2c9f986e77de131d0177de1487320004'}
+    });
+</script>
+</body>
+</html>
