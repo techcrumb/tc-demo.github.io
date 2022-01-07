@@ -66,9 +66,12 @@
         <div class="col">
             <h3>Player</h3>
             <div>
-                <div id="myElement1" style="height: 400px; width: 400px"></div>
+                <div id="myElement1" style="width: 400px; min-height: 200px"></div>
             </div>
-            <h3>Player Logs</h3>
+            <h3 style="margin-top: 15px">VIDEO URL</h3>
+            <div>
+                <div style="overflow-wrap: anywhere;" id="VideoURL"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -155,8 +158,6 @@
         });
 
         function initAdserver(bids) {
-            if (pbjs.initAdserverSet) return;
-            pbjs.initAdserverSet = true;
 
             var videoUrl = pbjs.adServers.dfp.buildVideoUrl({
                 adUnit: videoAdUnit,
@@ -175,9 +176,9 @@
             invokeTCPlayer(videoUrl);
         }
         // in case PBJS doesn't load
-        setTimeout(function() {
-            initAdserver();
-        }, FAILSAFE_TIMEOUT);
+        // setTimeout(function() {
+        //     initAdserver();
+        // }, FAILSAFE_TIMEOUT);
     }
 </script>
 
@@ -187,7 +188,13 @@
     let element = document.querySelector('#myElement1');
 
     function invokeTCPlayer(URL){
-        TC_YAAS.setup("myElement1", {
+        $("#VideoURL").text(URL)
+        let playerContainer = document.getElementById("myElement1");
+        let playerSlotId = Date.now()
+        playerContainer.innerHTML = "<div style='width: 100%; height: 100%' id='" + playerSlotId + "'></div>"
+
+
+        TC_YAAS.setup(playerSlotId, {
             url: URL,
             videoType: 'ima',
             isAd: true,
@@ -195,7 +202,7 @@
             env: "b",
             isVASTOS: true,
             // showPlayerOnAdLoad: true
-        }, "2c9f986e7bc1beef017bc5314a63003e")
+        }, "2c9f986e77de131d0177de1487320004")
     }
 </script>
 </body>
