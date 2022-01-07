@@ -136,11 +136,10 @@
         googletag.pubads().disableInitialLoad();
     });
 
-    // Init Prebid.js
-    var pbjs = pbjs || {};
-    pbjs.que = pbjs.que || [];
-
     function triggerPrebid(){
+        // Init Prebid.js
+        var pbjs = pbjs || {};
+        pbjs.que = pbjs.que || [];
         pbjs.que.push(function() {
             // pbjs.addAdUnits(adUnits);
             pbjs.addAdUnits(videoAdUnit);
