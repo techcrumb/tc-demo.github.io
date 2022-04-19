@@ -9,11 +9,11 @@
                     <Linear>
                         <Duration>00:00:14</Duration>
                         <AdParameters>
-                            <![CDATA[ <Root> <env>b</env> <DurationSeconds>14</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpTeKFevePJ5FdBDfU+0oMS4NWGOFFb/TXnlArGxTHZn16RdFydzEKThaeo3VCNBuzCI/AFsgFdD2fen5B95njhqoHRjqbG4kURWvr5q+A7mMEHwsSlrV9sSwbO6uzJUL/Da1mTmv00+qg2Medw4UzPG3SUsld/S3QIQXrXsOtBthF120p2ae8Y98fgjc9ldW33Vw83I+UTmVeQysrpvkZWPlbffYWbw9LKq2DN/HEsvhMxAqVDqW6/fRSkGwuNBsPB9TVMwXYpY/FkZqV9ESMrU=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>https://yaas-dev.performoo.com/main.js</MainURL> <tid>2c9f986e79aee2b50179aee407a60000</tid> </Root> ]]>
+                            <![CDATA[ <Root> <env>b</env> <DurationSeconds>14</DurationSeconds> <Ed>3BRsqtVZBLO+2W2QvZcRpTeKFevePJ5FdBDfU+0oMS4NWGOFFb/TXnlArGxTHZn16RdFydzEKThaeo3VCNBuzCI/AFsgFdD2fen5B95njhqoHRjqbG4kURWvr5q+A7mMEHwsSlrV9sSwbO6uzJUL/Da1mTmv00+qg2Medw4UzPG3SUsld/S3QIQXrXsOtBthF120p2ae8Y98fgjc9ldW33Vw83I+UTmVeQysrpvkZWPlbffYWbw9LKq2DN/HEsvhMxAqVDqW6/fRSkGwuNBsPB9TVMwXYpY/FkZqV9ESMrU=</Ed> <vURL>https://serv-b.performoo.com/vai/vv</vURL> <MainURL>https://yaas-b-monitor.performoo.com/main.js</MainURL> <tid>2c9f986e79aee2b50179aee407a60000</tid> </Root> ]]>
                         </AdParameters>
                         <MediaFiles>
                             <MediaFile type="application/javascript" bitrate="1500" width="600" height="400" delivery="progressive" apiFramework="VPAID">
-                                <![CDATA[ https://yaas-dev.performoo.com/tcvpaid.js ]]>
+                                <![CDATA[ https://yaas-b-monitor.performoo.com/tcvpaid.js ]]>
                             </MediaFile>
                         </MediaFiles>
                     </Linear>
