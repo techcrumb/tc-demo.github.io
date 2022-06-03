@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    window.addEventListener('message', function (ev) {
+        if (ev && ev.data && ev.data.tc){
+            // console.log("res:: ",ev.data.tc)
+            localStorage.setItem("tcyaas", ev.data.tc)
+        }
+    }, false);
+
+    setInterval(()=>{
+        let l = {
+            tc: localStorage.getItem("tcyaas")
+        }
+        window.top.postMessage(l, '*')
+    },2000)
+</script>
+</body>
+</html>
