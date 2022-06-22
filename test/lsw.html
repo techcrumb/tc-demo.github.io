@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<iframe id="tcframe" src="http://localhost:63342/hlsPatser/tc-demo.github.io/test/ls.html?_ijt=4k557j3ih54fpe1ebkh65dp21j" frameborder="0"></iframe>
+<script>
+    var tcAdSlotDiv = document.createElement('iframe');
+    tcAdSlotDiv.setAttribute("id", "tcframe");
+    tcAdSlotDiv.src = "https://demo.techcrumb.in/test/ls.html"
+    var refNode = document.querySelector("body div");
+    refNode.parentNode.insertBefore(tcAdSlotDiv, refNode.nextSibling);
+
+    window.addEventListener('message', function (ev) {
+        if (ev && ev.data && ev.data.tc){
+            console.log("PERFORMOOOOOO:: ",ev.data)
+        }
+    }, false);
+
+    function tcPush(message){
+        document.getElementById("tcframe").contentWindow.postMessage(message, '*')
+    }
+</script>
+</body>
+</html>
