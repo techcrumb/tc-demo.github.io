@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <style>
+            body{
+                margin: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <script>
+           
+
+var _tcVastTag = typeof tcVastOSTag !== "undefined" ? tcVastOSTag : 'https://manmohantechcrumb.github.io/tags/tag1.xml?description_url=[PAGEURL]';
+(function () {
+    /*!
+       YAAS Player
+       Copyright (c) 2022, YAAS Player, Performoo, All Rights Reserved
+       This source code and its use and distribution is subject to the terms
+       and conditions of the applicable license agreement.
+       https://media-b.performoo.com/tos/performoo-terms-of-services-mar172021.html
+       This product includes portions of other software. For the EULA (End User Level Agreement) see ..
+       https://media-b.performoo.com/eula/performoo-eula-dec292021.html
+    */
+
+    var loadTag = function (params){
+        var TC_ERROR = "Error"
+        var TC_ERROR_NO_SLOT = "Error_NoSlot"
+        var tcYaas={setup:function(e){var t=e.playerURL,n=document,r=window;e.playInCurrentFrame||(n=top.document,r=top),e.config&&e.config.isMonitoring&&this.captureEvent(e,"Session"),e.tagtriggerTime=(new Date).getTime();var a=e.slotSelector.selector,o=e.slotSelector.index;if(a){(c=n.createElement("div")).setAttribute("id",e.adSlot);var i=0,s=setInterval(function(){var e=n.querySelectorAll(a);if(e&&e.length>0){clearInterval(s);var t=e[o=o?parseInt(o):0];t.parentNode.insertBefore(c,t.nextSibling),l()}++i>200&&(window.clearInterval(s),tcYaas.captureError(TC_ERROR_NO_SLOT,tcYaasConfig,"TCPlayer: Slot position selector not found"))},500)}else if(n.getElementById(e.adSlot))l();else{var c;if(self===top||e.playInCurrentFrame);else(c=n.createElement("div")).setAttribute("id",e.adSlot),window.frameElement.parentNode.appendChild(c);l()}function l(){if(n.getElementById(e.adSlot)){var a=function(){r.TC_YAAS.setupVastOS({i:e,tag:e.vastTag,src:t})},o=n.createElement("script");o.async=1,o.src=t+"/tcInitVast.js",o.onload=a,o.onreadystatechange=a,n.head.appendChild(o)}else tcYaas.captureError(TC_ERROR_NO_SLOT,tcYaasConfig,"TCPlayer: Ad Slot not found")}},captureError:function(e,t,n){console.error("TCPlayer Error: ",n),this.captureEvent(t,e,{errorMessage:n})},captureEvent:function(e,t,n){if(e.ed){var r,a={...n,...(r=document.createElement("a"),r.href=document.referrer,{srcURL:function(e){if(!e)return e;var t=e.split(".");return t.size<3?e:e.includes("google")?t.slice(t.length-2).join("."):e}(self===top?encodeURIComponent(window.location.hostname):r.hostname),purl:self===top?encodeURIComponent(window.location.href.split("?")[0]):r.hostname}),action:t,event:"adtag",ed:e.ed,cacheBuster:(new Date).getTime(),tzOffset:(new Date).getTimezoneOffset()};if(e.trackBaseURL)(new Image).src=e.trackBaseURL+"?"+function(e){var t=[];for(var n in e)t.push(n+"="+e[n]);return t.join("&")}(a)}}};        var tcYaasConfig = {
+            trackBaseURL: 'https://trac-qa.performoo.com/capture',
+
+            slotSelector: {
+                selector: '',
+                index: '0'
+            },
+            env:"qa",
+            ed:"3BRsqtVZBLO+2W2QvZcRpbGwbvNS73+Rk35vvPYF/jbihcMXGQRTnY4vm1aABb8+Ts1paJFGdY/v2OJziU9PsVdqS8ZBty3fslVP14y52d2mAZukg3S4qc2MXeMsPdrR",
+            waterfallURLs:[
+                '[]',
+            ],
+            fallbackTag:'[]',
+            lnf: {d: 'dWHRH6ul', m: 'dWHRH6ul'},
+            v: {
+                type: "",
+                url: ""
+            },
+            config: {"tagReTrigger":{"interval":5.0,"consecutiveErrorLimit":5.0},"performance":{"tagLoadTime":"0"},"backFallJS":{"post":""},"osConfig":{"adType":"vast","waterfallURLs":[],"hbConfig":""},"playInCurrentFrame":false,"isMonitoring":true,"vastRetry":{},"monitoring":true,"adSkipTime":5,"enableRemnantSelling":false,"showPlayerOnAdLoad":false,"cuePoints":[],"tagLoadTime":0},
+        }
+
+        try {
+            tcYaas.setup({...tcYaasConfig, ...params})
+        } catch (e) {
+            console.error("TC Error: ",e)
+            tcYaas.captureError(TC_ERROR, tcYaasConfig, e.message)
+        }
+    }
+
+    var adSlot = 'pf-vastos-dVrofTDX-' + new Date().getTime();
+    document.write("<div id='" + adSlot + "'></div>");
+    var param = {
+        adSlot: adSlot,
+        vastTag: _tcVastTag,
+        playInCurrentFrame: 0,
+        netDataURL: 'https://tags3-qa.performoo.com/dWHRqAu9/data.json',
+        netId: "dWHRqAu9",
+        tSrc: "s3"
+    }
+    var w=top;param.playInCurrentFrame&&(w=window),w.TC_YAAS||(w.TC_YAAS={}),"undefined"!=typeof tcGamMacroClick&&(param.gamMacros={click:tcGamMacroClick}),fetch(param.netDataURL).then(a=>a.json()).then(a=>{a&&a.serving?(param={...param,...a},w.TC_YAAS[adSlot]={loadTag:loadTag,params:param},loadTag(param)):console.log("Empty Net data response or serving is off")});
+}())
+        </script>
+</body>
+</html>
