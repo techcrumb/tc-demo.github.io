@@ -92,6 +92,9 @@
                     function close() {
                         let bodyTranslateStyle = pos === "SIDE" ? `translateX(${"-" + "0" + "px"})` : `translateY(${"-" + "0" + "px"})`
                         document.body.style.transform = bodyTranslateStyle
+                        setTimeout(() => {
+                            img.remove()
+                        }, SHOW_AFTER)
                     }
 
                     function show() {

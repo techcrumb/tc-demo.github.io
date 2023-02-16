@@ -62,7 +62,7 @@
             (
                 function () {
                     const pos = "TOP"
-                    const IMG_URL = "https://demo.techcrumb.in/images/vertical-banner.jpg"
+                    const IMG_URL = "https://thumbs.dreamstime.com/z/sunscreen-cream-horizontal-ads-banner-sun-care-sunscreen-poster-realistic-d-cosmetic-tube-sunscreen-cream-horizontal-ads-172147624.jpg"
                     const img = document.createElement("img")
                     const position = pos === "SIDE" ? "right" : "top"
                     const positionForShow = pos === "SIDE" ? "top" : "left"
@@ -91,6 +91,9 @@
                     function close() {
                         let bodyTranslateStyle = pos === "SIDE" ? `translateX(${"-" + "0" + "px"})` : `translateY(${"-" + "0" + "px"})`
                         document.body.style.transform = bodyTranslateStyle
+                        setTimeout(() => {
+                            img.remove()
+                        }, SHOW_AFTER)
                     }
 
                     function show() {
